@@ -1,0 +1,43 @@
+.img_gallery_holiday{
+    display: grid;
+    grid-template-columns: 1fr 260px 260px;
+    gap: 10px;
+    place-items: center;
+}
+/* .img_gallery_holiday img{
+    height: 290px;
+} */
+.fixed_img{
+    width: 500px !important;
+    height: 200px !important;
+
+}
+
+@media (max-width:1024px) {
+    .gallery_three, .gallery_two{
+         display: none;
+    }
+    .img_gallery_holiday {
+        display: flex;
+        width: 100%;
+    }
+    .img_gallery_holiday img{
+        border-radius: 0px;
+    }
+    .galler-section{
+        width: 95%;
+    }
+    .galler-section p{
+        width: 100%;
+    }
+    .para_gallery{
+        width: 100%;
+    }
+    
+}
+@media (max-width:850px) {
+    .two_section_data{
+        width: 95%;
+        flex-direction: column;
+    }
+}

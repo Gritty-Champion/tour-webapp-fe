@@ -1,0 +1,114 @@
+.aboutus_slider {
+  /* overflow-x: hidden !important; */
+}
+.nested_cards_about {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* gap: 12px; */
+  /* overflow: hidden; */
+}
+.aboutus_slider .slick-track {
+  display: flex !important;
+  align-items: center !important;
+  /* gap: 16px; */
+  justify-content: space-between !important;
+}
+.aboutus_slider .slick-slide {
+  width: 300px !important;
+}
+.aboutus_slider .slick-dots{
+  display: none !important;
+}
+.aboutus_slider .box {
+  transition: all 0.25s;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  /* border-radius: 10px; */
+  cursor: pointer;
+}
+/* .aboutus_slider .slick-dots {
+  display: none !important;
+} */
+.aboutus_slider .slick-slider {
+  position: relative;
+}
+
+.aboutus_slider .slick-prev:before,
+.aboutus_slider .slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: black; /* Change this to your preferred color */
+}
+
+.aboutus_slider .slick-prev:before {
+    content: '\2190'; /* Unicode for left arrow */
+    font-size: 24px; /* Adjust the size as needed */
+    color: black; /* Change this to your preferred color */
+}
+
+.aboutus_slider .slick-next:before {
+    content: '\2192' !important; /* Unicode for right arrow */
+    font-size: 24px; /* Adjust the size as needed */
+    color: black; /* Change this to your preferred color */
+}
+
+/* Hide the text */
+.aboutus_slider .slick-prev,
+.aboutus_slider .slick-next {
+  width: 40px;
+  /* height: 40px; */
+  border-radius: 4px;
+  background-color:  transparent;
+  color: transparent;
+  text-indent: -9999px;
+  /* overflow: hidden; */
+  height: 40px;
+  position: absolute;
+  z-index: 99999;
+}
+.aboutus_slider .slick-prev {
+  left: 0px;
+  background-image: url('../../assest/images/left.png'); /* Add your left arrow image path */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; 
+  top: 80px;
+}
+.aboutus_slider .slick-next {
+  right: -10px;
+  background-image: url('../../assest/images/rightArrow.svg'); /* Add your left arrow image path */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; 
+  top: 80px;
+  height: 25px;
+
+
+}
+.aboutus_slider .slick-prev{
+  left: -80px !important;
+  top: 100px !important;
+}
+.aboutus_slider .slick-next{
+  right: -80px !important;
+  top: 100px !important;
+}
+
+@media (max-width:768px) {
+  .aboutus_slider .slick-prev{
+    left: -40px !important;
+  }
+  .aboutus_slider .slick-next{
+    right: -40px !important;
+  }
+}
+@media (max-width:768px) {
+  .aboutus_slider .slick-prev{
+    left: -30px !important;
+  }
+  .aboutus_slider .slick-next{
+    right: -30px !important;
+  }
+}

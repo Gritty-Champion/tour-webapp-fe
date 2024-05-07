@@ -1,0 +1,63 @@
+.link_section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates three equal-width columns */
+    gap: 30px;
+}
+.suscribe_section form input{
+    border-color: #FFFFFF00;
+    border-radius: 55px 55px 55px 55px;
+    padding: 6px 10px;
+    background-color: #0D517E;
+    
+}
+.btn_subscribe{
+    background-color: white;
+    color: black;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 8px 0px;
+    border-radius: 44px;
+}
+.link_section_one li, .link_section_two li{
+    font-size: 14px;
+    padding: 4px 0px;
+}
+.bottom_card {
+     border-top: 1px solid gray;
+}
+.link_tab ul li{
+    list-style-type: circle;
+font-size: 14px;
+}
+.socila_icon svg{
+    font-size: 22px;
+}
+@media (max-width:768px) {
+    .link_section{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(350px,1fr)); /* Creates three equal-width columns */
+        gap: 30px;
+    }
+    .bottom_card{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .form_section div{
+        flex-direction: column;
+    }
+    .form_section div input{
+        width: 100%;
+    }
+}
+@media (max-width:425px) {
+    .link_section{
+       
+        grid-template-columns: repeat(auto-fit,minmax(100%,1fr)); /* Creates three equal-width columns */
+    }
+     .link_tab ul li{
+      font-size: 12px;
+    }
+    .link_tab ul{
+        gap: 0.2rem !important;
+    }
+}

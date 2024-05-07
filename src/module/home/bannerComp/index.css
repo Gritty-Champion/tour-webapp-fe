@@ -1,0 +1,11 @@
+.img_section{
+    display: none;
+}
+@media (max-width:768px) {
+    .nested_banner_section{
+       display: none;
+    }
+    .img_section{
+        display: inline-block;
+    }
+}

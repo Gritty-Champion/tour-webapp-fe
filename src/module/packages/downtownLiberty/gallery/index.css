@@ -1,0 +1,6 @@
+.img_gallery{
+    display: grid;
+    grid-template-columns: 1fr 300px 300px;
+    gap: 4px;
+    place-items: center;
+}

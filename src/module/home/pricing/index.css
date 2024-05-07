@@ -1,0 +1,32 @@
+.img_tubmail img{
+        padding: 0.25rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        transition: all .2s ease-in-out;
+        max-width: 100%;
+        height: auto;
+}
+.heading_pricing{
+    border-bottom: 2px solid gray;
+}
+.pricing_value div{
+    border-bottom: 1px solid gray;
+    padding: 6px 0px;
+}
+.pricing_value div:last-child{
+    border-bottom: none;
+}
+@media (max-width:768px) {
+    .img_tubmail{
+        display: none;
+    }
+    .nested_pricing_section{
+        width: 90%;
+    }
+}
+@media (max-width:490px) {
+    .nested_pricing_section{
+        width: 98%;
+    }
+}

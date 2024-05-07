@@ -1,0 +1,26 @@
+.btn_coupon{
+    font-family: "Roboto", Sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: #FB520E;
+    border-radius: 100px 100px 100px 100px
+}
+.css-cs89jn{
+    border: none !important;
+    outline: none !important;
+}
+.date_picker_modal .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{
+   background-color: lightgray !important;
+}
+.date_picker_modal .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+      top: -4px !important;
+      font-size: 12px !important;
+
+}
+.date_picker_modal .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    /* padding-top: 0px !important; */
+    color: black;
+}
+.date_picker_modal .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+    border-color: lightgray !important;
+}

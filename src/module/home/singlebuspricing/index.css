@@ -1,0 +1,76 @@
+
+.nested_cards{
+    /* width: 90%; */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    overflow: hidden;
+}
+.nested_cards .box{
+    transition: all 0.25s;
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.nested_cards .box img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.line{
+    /* border-right: 2px solid gray; */
+    width: 1px;
+    height: 24px;
+    background-color: #ccc;
+}
+.list_section li{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.nested_cards .slick-track{
+    display: flex !important;
+    /* gap: 10px !important; */
+    justify-content: space-between !important;
+}
+.cards{
+    overflow-x: hidden !important;
+}
+.nested_cards .slick-slide{
+      margin: 0 12px;
+}
+.nested_cards .slick-next, .nested_cards .slick-prev{
+    display: none !important;
+}
+.nested_cards .slick-dots{
+    display: flex !important;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+.nested_cards .slick-dots li button{
+    opacity: 0 !important;
+    /* color: #000 */
+   
+}
+.nested_cards .slick-dots li{
+    border: 2px solid gray;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    /* margin-top: 20px !important; */
+}
+.nested_cards .slick-dots li.slick-active{
+    border: 2px solid #FB520E;
+}
+.card_content del{
+    color: #FB520E;
+    text-decoration: line-through;
+}
+.card_content del span{
+    color: black;
+}

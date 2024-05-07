@@ -1,0 +1,72 @@
+.box_section {
+  padding: 15px 11px 11px 11px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 10px;
+}
+.box_section .information-section {
+  background-color: white;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.3);
+  border-bottom: 0 !important;
+}
+.links_included ul li {
+  background-color: #eaeaea;
+  color: inherit;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 0px 1px;
+}
+.information-section {
+  /* padding: 10px; */
+}
+.information-section .MuiAccordionSummary-root,
+.faqs_section .MuiAccordionSummary-root {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  flex-direction: row !important;
+}
+.information-section .css-ta84vm-MuiAccordionDetails-root {
+  padding: 22px 0px 16px !important;
+}
+
+.list_item {
+  list-style-type: circle;
+  padding-left: 14px;
+}
+.selected {
+  background-color: white !important;
+  /* box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3); */
+  border-bottom: 1px solid lightgray !important;
+  position: relative;
+}
+.information-section .css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root,
+.faqs_section .css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
+  background-color: transparent !important;
+}
+.information-section .css-1fjvggn-MuiPaper-root-MuiAccordion-root {
+  border: none !important;
+  margin: 0px 12px;
+  border-bottom: 1px solid lightgray !important;
+}
+.nested_tickets p {
+  list-style-type: circle;
+}
+.faqs_section .css-1fjvggn-MuiPaper-root-MuiAccordion-root {
+  margin: 10px 0px;
+  border: none !important;
+  /* padding: 0.75rem 1.25rem; */
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 12px;
+}

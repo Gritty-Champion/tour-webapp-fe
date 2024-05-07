@@ -1,0 +1,16 @@
+.blog_image img{
+   height: 350px;
+}
+
+
+@media (max-width: 850px) {
+    .detail_blog_section{
+        width: 100%;
+    }
+    .detail_blog_section h1{
+        font-size: 22px;
+    }
+    .blog_image img{
+        height: auto;
+     }
+}

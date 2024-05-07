@@ -1,0 +1,34 @@
+.nested_benefits_section ul li{
+    display: flex;
+    gap: 10px;
+}
+.nested_benefits_section ul li svg{
+    font-size: 14px;
+    margin-top: 4px;
+}
+.banner_info{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-bottom: 0 !important;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 10px;
+}
+.banner_info ul li{
+    color: #0056b3;
+}
+@media (max-width:768px) {
+    .nested_benefits_section,.banner_info,.desc_galllery{
+        width: 95%;
+    }
+}
+@media (max-width:550px) {
+    .banner_info div{
+        width: 100%;
+        padding: 8px;
+    }
+}
+@media (max-width:480px) {
+    .number_section ul{
+        flex-wrap: wrap;
+    }
+}
