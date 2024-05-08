@@ -468,8 +468,7 @@ export let dammyDataSingleBus = [
       // "Food &amp; Drink: A delicious Daisy&#39;s Bakery Cookie and a complimentary beverage of your choosing.",
       // "Malcolm X Boulevard",
     ],
-    galleryImg: [
-      
+    galleryImg: [  
       usaflag,
       shipoverview,
       tower,
@@ -665,6 +664,7 @@ export let dammyDataDoubleBus = [
       // "NoHo",
     ],
     galleryImg: [
+      // nightTourVideo,
        night_tour1,
        night_tour2,
        night_tour3,

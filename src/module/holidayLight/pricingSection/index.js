@@ -274,7 +274,7 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
                 <div className="adults flex items-center justify-between my-2">
                   <h1 className="w-full">Adults</h1>
                   <div className="flex gap-3 w-full">
-                    <del className="text-xs">$49</del>{" "}
+                    <del className="text-xs">$124</del>{" "}
                     <p className="text-2xl text-red-500">
                       ${realData?.adultPrice}
                     </p>
@@ -303,7 +303,7 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
                     <span className="absolute top-4 text-xs"> (age 4-12)</span>
                   </h1>
                   <div className="flex gap-3 w-full">
-                    <del className="text-xs">$39</del>{" "}
+                    <del className="text-xs">$124</del>{" "}
                     <p className="text-2xl text-red-500">
                       ${realData?.childPirce}
                     </p>

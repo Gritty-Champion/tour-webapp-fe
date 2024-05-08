@@ -26,7 +26,6 @@ export const HolidayTourGallery = ({ realData }) => {
                   <video
                     src={realData?.video}
                     className="fixed1_img"
-
                     autoPlay
                     loop
                     muted

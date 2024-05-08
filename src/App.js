@@ -2,6 +2,7 @@ import "./App.css";
 import { DowntownLibertyCruise } from "./layout/route/downtownLib";
 import { Event } from "./layout/route/event";
 import { Home } from "./layout/route/home";
+import { Provider } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import { NorthPoleExpress } from "./layout/route/northPoleExpress";
 import { Aboutus } from "./layout/route/aboutus";
@@ -25,7 +26,6 @@ import { CheckPassword } from "./module/authentication";
 import { ConfirmationForm } from "./module/reserve";
 import { Checkout } from "./module/checkout";
 import { ThankYou } from "./module/thankyou";
-import SignInUI from "./component/pages/SignInUi";
 
 function App() {
   const navigate = useNavigate();
@@ -92,7 +92,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <> 
       <Routes>
         <Route path="/" element={<Home getnamePackages={getnamePackages} />} />
         <Route
@@ -105,7 +105,6 @@ function App() {
             />
           }
         />
-        <Route path="/signin" element={<SignInUI />} />
         <Route
           path="/events"
           element={<Event getnamePackages={getnamePackages} />}
