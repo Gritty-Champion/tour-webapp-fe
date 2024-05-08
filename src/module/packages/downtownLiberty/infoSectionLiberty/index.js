@@ -360,28 +360,27 @@ export const InfoSectionLiberty = () => {
               <>
                 <div className="main_ticket w-full p-4 bg-white">
                   <div className="nested_tickets">
-                    <h1 className="text-lg font-medium">
-                      Specific Start Date:
-                    </h1>
-                    <li className="text-sm ">
-                      Valid for 48 consecutive hours starting from your selected
-                      start date, or time of purchase (if selected start date is
-                      the same day as purchase).
-                    </li>
-                    <h1 className="text-lg font-medium">
-                      Flexible Start Date:
-                    </h1>
-                    <li className="text-sm ">
-                      Valid for 48 consecutive hours starting from the time when
-                      your tickets are scanned by our staff.
-                    </li>
-                    <h1 className="text-lg font-medium">All Options:</h1>
-                    <li className="text-sm ">
-                      Brooklyn Tour, Liberty Cruise (No Sky Deck access, General
-                      Admission only), Holiday Lights Tour with Entertaining
-                      Host and Night Tour with Entertaining Host are valid for a
-                      single ride only and require reservations after purchase.
-                    </li>
+                  <li className="text-sm ">
+                  Once you start using your Hop on Hop off tour ticket, it will be valid for a specific duration. This means that from the moment you first board the bus and activate your ticket, you can enjoy unlimited rides and hop on and off at any stop within the designated time frame.
+                  </li>
+                  <li className="text-sm ">
+                  For example, if you purchase a 24-hour ticket and begin using it at 10:00 AM, you will have access to the tour buses until 10:00 AM the following day.
+                  During this period, you can explore Downtown NYC at your own pace, getting off at any stop that catches your interest and rejoining the tour whenever you're ready.
+
+                  </li>
+                 
+                  <li className="text-sm ">
+                  If you purchase a single day ticket, your ticket is only valid for the same day irrespective of when you commence its use.
+                  </li>
+                  <li className="text-sm ">
+                  Tickets for boat cruises are valid only for single entry.
+                  </li>
+                  <li className="text-sm ">
+                  Customers are required to purchase a minimum of two drinks of their choice in addition to the purchase of comedy tickets.
+                  </li>
+                  <li className="text-sm ">
+                  Please keep in mind that the validity period of your ticket starts from the moment of your first usage. So, make the most of your time and take full advantage of the flexibility and convenience offered by our Hop on Hop off tour.
+                  </li>
                   </div>
                 </div>
               </>
@@ -479,3 +478,5 @@ export const InfoSectionLiberty = () => {
     </div>
   );
 };
+
+

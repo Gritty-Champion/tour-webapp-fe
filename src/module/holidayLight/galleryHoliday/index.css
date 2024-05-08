@@ -10,7 +10,11 @@
 .fixed_img{
     width: 500px !important;
     height: 200px !important;
+}
 
+.fixed1_img{
+    width: 400px !important;
+    height: 450px !important;
 }
 
 @media (max-width:1024px) {
@@ -41,3 +45,27 @@
         flex-direction: column;
     }
 }
+/* @media (max-width:400px) {
+    .vid_data{
+        width: 95%;
+        flex-direction: column;
+    }
+} */
+.img_gallery_holiday.has_video video {
+    display: block; /* Show video initially */
+    }
+    
+    .img_gallery_holiday.has_video img {
+    display: none; /* Hide image initially */
+    }
+    
+    @media (min-width: 450px) {
+    .img_gallery_holiday.has_video video {
+    display: none; /* Hide video on larger screens */
+    }
+    
+    .img_gallery_holiday.has_video img {
+    display: block; /* Show image on larger screens */
+    }
+    }
+

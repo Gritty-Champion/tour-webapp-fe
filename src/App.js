@@ -2,6 +2,7 @@ import "./App.css";
 import { DowntownLibertyCruise } from "./layout/route/downtownLib";
 import { Event } from "./layout/route/event";
 import { Home } from "./layout/route/home";
+import { Provider } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import { NorthPoleExpress } from "./layout/route/northPoleExpress";
 import { Aboutus } from "./layout/route/aboutus";
@@ -26,11 +27,10 @@ import { ConfirmationForm } from "./module/reserve";
 import { Checkout } from "./module/checkout";
 import { ThankYou } from "./module/thankyou";
 
-
 function App() {
   const navigate = useNavigate();
   let [data, setData] = useState("");
-  let [totalAmount, setTotalAmount]=useState(0);
+  let [totalAmount, setTotalAmount] = useState(0);
   const getnamePackages = (uniqueValue) => {
     //  console.log(value,"getnamePackages");
 
@@ -77,29 +77,32 @@ function App() {
       // window.location.reload();
     }
   };
-  useEffect(() =>{
+  useEffect(() => {
     getnamePackages();
-  },[]);
-  let getSessionId=sessionStorage.getItem("password");
+  }, []);
+  let getSessionId = sessionStorage.getItem("password");
   console.log("datadatadatadata", totalAmount);
-   
-  useEffect(() =>{
-    if(getSessionId == "success"){
+
+  useEffect(() => {
+    if (getSessionId == "success") {
       navigate("/");
-    }else{
+    } else {
       navigate("/password");
     }
-  },[]);
+  }, []);
 
   return (
-    <>
+    <> 
       <Routes>
-        
         <Route path="/" element={<Home getnamePackages={getnamePackages} />} />
         <Route
           path="/packages/:packageName"
           element={
-            <HolidayTour data={data} getnamePackages={getnamePackages} setTotalAmount={setTotalAmount} />
+            <HolidayTour
+              data={data}
+              getnamePackages={getnamePackages}
+              setTotalAmount={setTotalAmount}
+            />
           }
         />
         <Route
@@ -144,22 +147,23 @@ function App() {
           path="/terms&Condition"
           element={<Terms_Condition getnamePackages={getnamePackages} />}
         />
- <Route
+        <Route
           path="/privacy-policy"
           element={<PrivacyPolicy getnamePackages={getnamePackages} />}
         />
 
-
-          <Route
+        <Route
           path="/detail-Section"
           element={<DetailSectionPage getnamePackages={getnamePackages} />}
         />
-                <Route path="/password" element={<CheckPassword />}/>
-                <Route path="/reserve/confirm" element={<ConfirmationForm data={data} totalAmount={totalAmount} />}/>
-                
-                <Route path="/checkout/payment" element={<Checkout />}/>
-                <Route path="/thank-you" element={<ThankYou />}/>
+        <Route path="/password" element={<CheckPassword />} />
+        <Route
+          path="/reserve/confirm"
+          element={<ConfirmationForm data={data} totalAmount={totalAmount} />}
+        />
 
+        <Route path="/checkout/payment" element={<Checkout />} />
+        <Route path="/thank-you" element={<ThankYou />} />
       </Routes>
     </>
   );
