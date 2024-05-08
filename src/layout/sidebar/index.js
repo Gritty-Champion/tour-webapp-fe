@@ -51,9 +51,42 @@ export const ToggleSidebars = ({getnamePackages}) => {
               <li>
                 <a className="sd-link" onClick={() =>
                     getnamePackages("Hop-on-Hop-off-downtown-tour")
-                  }>Hop-on Hope-off</a>
+                  }>Hop-on Hop-off All city tour Pass (Red Line)</a>
+              </li>
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("all-city-iconic-express-tour")
+                  }>All city Iconic Express Tour</a>
               </li>
               <div className="pl-0">
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("48Hours-iconic-access-pass")
+                  }>48 Hrs Hop on Hop off Iconic Pass</a>
+              </li>
+
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("5day-ultimate-unlimited-access-pass")
+                  }>Ultimate Unlimited Access Pass</a>
+              </li>
+              </div>
+
+              <div className="pl-0">
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("night-tour")
+                  }>Night Tour (Black Line)</a>
+              </li>
+
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("times-square-live-commedy-show")
+                  }>Time Square Live Comedy Show</a>
+              </li>
+              </div>
+
+              {/* <div className="pl-0">
               <li>
                 <a className="sd-link" onClick={() => getnamePackages("brooklyn-express-tour")}>Brooklyn Express Tour</a>
               </li>
@@ -61,12 +94,12 @@ export const ToggleSidebars = ({getnamePackages}) => {
                 <a className="sd-link" onClick={() => getnamePackages("1-day-iconic-access-pass")}>1 day Iconic Access Pass</a>
               </li>
               </div>
-              {/* <li>
+              <li>
               <NavLink className="sd-link" to="/iconic-holiday-lights"> Holiday Lights</NavLink>
-              </li> */}
+              </li>
               <li>
                 <a className="sd-link"  onClick={() => getnamePackages("night-tour")}>Night Tours</a>
-              </li>
+              </li> */}
               {/* <div className="dropdown">
                 <li
                   className="sd-link justify-between items-center"
@@ -105,12 +138,12 @@ export const ToggleSidebars = ({getnamePackages}) => {
                       </NavLink>
                       </li> */}
 
-                    <li>
+                    {/* <li>
                     <NavLink to="/attraction">
 
                       Things to do in NYC
                       </NavLink>
-                      </li>
+                      </li> */}
                     <li>
                     <NavLink to={"/about-us"}>
 
@@ -146,3 +179,5 @@ export const ToggleSidebars = ({getnamePackages}) => {
     </>
   );
 };
+
+

@@ -22,7 +22,7 @@ let data = [
     heading: `Hop-on Hop-off All City Tour (Red Line)`,
     location: `New York`,
     desc: ` See the best of Downtown NYC in a fun and convenient way with our Hop on Hop off tour. Our open top buses offer stunning views of the city, and you can hop on a....`,
-    amount: "124",
+    amount: "64",
     img: hopOnHopOffDown,
     link: "Hop-on-Hop-off-downtown-tour",
   },
@@ -32,38 +32,78 @@ let data = [
     heading: `All City Iconic Express Tour`,
     location: `New York`,
     desc: `The All City Iconic Express Tour is a great way to see the most popular tourist attractions in a city in a short amount of time. The tour typically takes about ...`,
-    amount: "69",
+    amount: "49.99",
     img: lastImg,
     link: "all-city-iconic-express-tour",
   },
   {
     id: 3,
+    heading: `48 Hrs Hop On Hop Off Iconic Pass`,
+    location: `New York`,
+    desc: `Immerse yourself in the vibrant energy and explore the iconic landmarks, neighborhoods, and cultural attractions that make this city truly unique. With the 4...`,
+    amount: "123",
+    img: img3,
+    link: "48Hours-iconic-access-pass",
+  },
+  {
+    id: 4,
+    heading: `Ultimate Unlimited Access Pass`,
+    location: `West 47th Street & 7th Avenue New York 10036`,
+    desc: `An Ultimate Unlimited Iconic Access Pass is a ticket that gives you access to a city's most popular attractions for a set period of time (5 days). The pass typi...`,
+    amount: "206",
+    img: hoponHopOff,
+    link: "5day-ultimate-unlimited-access-pass",
+  },
+  {
+    id: 5,
+    heading: `Night Tour (Black Line)`,
+    location: `New York`,
+    desc: `Discover the enchanting allure of the city lights with our captivating Night Tour. Immerse yourself in the vibrant energy of the urban landscape as New York Cit...`,
+    amount: "64",
+    img: lastImg,
+    link: "night-tour",
+  },
+  {
+    id: 6,
     heading: `Times Square Live Comedy Show`,
     location: `New York City`,
     desc: `Get ready for a night of laughter and entertainment in the heart of New York City with our Times Square Live Comedy Show. Step into a world of humor, wit, and u...`,
-    amount: "39",
+    amount: "39.99",
     img: shutterMusic,
     link: "times-square-live-commedy-show",
   },
   {
-    id: 4,
-    heading: `Hop-on Hop-off Harlem Tour (Orange Line)`,
+    id: 7,
+    heading: `Liberty boat Cruises`,
     location: `New York`,
-    desc: `Experience the vibrant culture and history of Harlem with our Hop-on Hop-off tour. Our open-top buses offer stunning views of the neighborhood, and you can hop ... `,
-    amount: "59",
-    img: img3,
-    link: "hop-on-hop-off-harlem-tour",
+    desc: `Experience incredible views of the Statue of Liberty on our cruise, offering unparalleled photo
+    opportunities and a celebratory toast to New York City. As you embark on this journey, witness iconic
+    landmarks like the Brooklyn Bridge and more while cruising the waterways, all while taking in the
+    breathtaking skyline of lower Manhattan.`,
+    amount: "39.99",
+    img: shipoverview,
+    link: "liberty-boat-cruises",
   },
+
+  // {
+  //   id: 4,
+  //   heading: `Hop-on Hop-off Harlem Tour (Orange Line)`,
+  //   location: `New York`,
+  //   desc: `Experience the vibrant culture and history of Harlem with our Hop-on Hop-off tour. Our open-top buses offer stunning views of the neighborhood, and you can hop ... `,
+  //   amount: "59",
+  //   img: img3,
+  //   link: "hop-on-hop-off-harlem-tour",
+  // },
   
-  {
-    id: 5,
-    heading: `Hop-on Hop-off Uptown Tour (Purple Line)`,
-    location: `New York`,
-    desc: `The Hop on Hop off Uptown Tour is a great way to see the best of New York City. The tour takes you pass some of the city's most iconic landmarks, including Time...`,
-    amount: "59",
-    img: img2,
-    link: "/packages/Hop-on-Hop-off-downtown-tour",
-  },
+  // {
+  //   id: 5,
+  //   heading: `Hop-on Hop-off Uptown Tour (Purple Line)`,
+  //   location: `New York`,
+  //   desc: `The Hop on Hop off Uptown Tour is a great way to see the best of New York City. The tour takes you pass some of the city's most iconic landmarks, including Time...`,
+  //   amount: "59",
+  //   img: img2,
+  //   link: "/packages/Hop-on-Hop-off-downtown-tour",
+  // },
   // {
   //   id: 6,
   //   heading: `Holiday Lights Christmas New York City Sightseeing Tour: Gifts, Warmth, and Iconic Sights!`,
@@ -75,55 +115,19 @@ let data = [
   //   img: radiocity,
   //   link: "Holiday-Lights-Christmas",
   // },
-  {
-    id: 7,
-    heading: `Ultimate Unlimited Access Pass`,
-    location: `West 47th Street & 7th Avenue New York 10036`,
-    desc: `An Ultimate Unlimited Iconic Access Pass is a ticket that gives you access to a city's most popular attractions for a set period of time (5 days). The pass typi...`,
-    amount: "129",
-    img: hoponHopOff,
-    link: "5day-ultimate-unlimited-access-pass",
-  },
-  {
-    id: 8,
-    heading: `48 Hrs Hop On Hop Off Iconic Pass`,
-    location: `New York`,
-    desc: `Immerse yourself in the vibrant energy and explore the iconic landmarks, neighborhoods, and cultural attractions that make this city truly unique. With the 4...`,
-    amount: "109",
-    img: img3,
-    link: "48Hours-iconic-access-pass",
-  },
-  {
-    id: 9,
-    heading: `1 Day Iconic Access Pass`,
-    location: `New York`,
-    desc: `Experience the iconic sights of New York City with our 1 Day Iconic Access Pass. Immerse yourself in the vibrant energy and rich history of the city as you emba...`,
-    amount: "89",
-    img: img2,
-    link: "1-day-iconic-access-pass",
-  },
-  {
-    id: 10,
-    heading: `Night Tour (Black Line)`,
-    location: `New York`,
-    desc: `Discover the enchanting allure of the city lights with our captivating Night Tour. Immerse yourself in the vibrant energy of the urban landscape as New York Cit...`,
-    amount: "59",
-    img: lastImg,
-    link: "night-tour",
-  },
+ 
+ 
+  // {
+  //   id: 9,
+  //   heading: `1 Day Iconic Access Pass`,
+  //   location: `New York`,
+  //   desc: `Experience the iconic sights of New York City with our 1 Day Iconic Access Pass. Immerse yourself in the vibrant energy and rich history of the city as you emba...`,
+  //   amount: "89",
+  //   img: img2,
+  //   link: "1-day-iconic-access-pass",
+  // },
 
-  {
-    id: 11,
-    heading: `Liberty boat Cruises`,
-    location: `New York`,
-    desc: `Experience incredible views of the Statue of Liberty on our cruise, offering unparalleled photo
-    opportunities and a celebratory toast to New York City. As you embark on this journey, witness iconic
-    landmarks like the Brooklyn Bridge and more while cruising the waterways, all while taking in the
-    breathtaking skyline of lower Manhattan.`,
-    amount: "75",
-    img: shipoverview,
-    link: "liberty-boat-cruises",
-  },
+
 ];
 
 export const TourSection = ({ getnamePackages }) => {
@@ -163,7 +167,7 @@ export const TourSection = ({ getnamePackages }) => {
                         View Details
                       </button>
                       <p className="totalValue text-sm">
-                        From ${value.amount}.00
+                        From ${value.amount}
                       </p>
                     </div>
                   </div>
@@ -176,3 +180,4 @@ export const TourSection = ({ getnamePackages }) => {
     </div>
   );
 };
+

@@ -20,7 +20,20 @@ export const HolidayTourGallery = ({ realData }) => {
             <h1 className="text-left text-black text-2xl">
               {" "}
               {realData?.heading}
-            </h1>
+              
+            </h1><div className="img_gallery_holiday my-2 has_video">
+              <div className="w-full h-full"> { realData?.video && (
+                  <video
+                    src={realData?.video}
+                    className="fixed1_img"
+
+                    autoPlay
+                    loop
+                    muted
+                  />
+                )}
+                </div>
+                </div>
             <div className="img_gallery_holiday my-2">
               <div className="w-full h-full">
                 {realData?.galleryImg ? (
@@ -99,3 +112,5 @@ export const HolidayTourGallery = ({ realData }) => {
     </div>
   );
 };
+
+

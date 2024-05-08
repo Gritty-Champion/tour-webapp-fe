@@ -32,7 +32,9 @@ export const Footer = () => {
             <h1 className="text-lg">New York Iconic</h1>
             <ul>
               <li>
-                <NavLink to={"/about-us"}>About Us</NavLink>
+                {/* <NavLink to={"/about-us"}>About Us</NavLink> */}
+                <a href="https://newyorkiconiccruises.com/about/" >About Us</a>
+
               </li>
               <li>
                 <NavLink to={"/contact"}>Contact Us</NavLink>{" "}
@@ -40,9 +42,9 @@ export const Footer = () => {
               <li>
                 <NavLink to={"/faq"}>FAQ</NavLink>{" "}
               </li>
-              <li>
+              {/* <li>
                 <NavLink to={"/attraction"}>Things To Do In NYC</NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="link_section_two">
@@ -80,3 +82,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+

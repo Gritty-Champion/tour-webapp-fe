@@ -79,7 +79,7 @@ export const SingleBuspricing = ({getnamePackages}) => {
                   </div>
                   <div>
                    <ul className="list_section text-sm pl-5 my-2">
-                   <li className="pl-6 text-base font-medium">Included Tour</li>
+                   <li className="pl-6 text-base font-medium">Sites to Sight en route Tour</li>
                      {value.includes.map(data =>{
                       return(
                         <li><FaCheckCircle className="text-primary" />{data}</li>
@@ -115,7 +115,7 @@ export const SingleBuspricing = ({getnamePackages}) => {
                 </div>
                 <div>
                  <ul className="list_section text-sm pl-5 my-2">
-                 <li className="pl-6 text-base font-medium">Included Tour</li>
+                 <li className="pl-6 text-base font-medium">Sites to Sight en route Tour</li>
 
                     <li><FaCheckCircle className="text-primary" /> Exclusive Gifts</li>
                     <li><FaCheckCircle className="text-primary" />Cozy Blankets and Warm Hats</li>
@@ -249,3 +249,5 @@ export const SingleBuspricing = ({getnamePackages}) => {
     </div>
   );
 };
+
+

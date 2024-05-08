@@ -74,7 +74,7 @@ export const DoubleDacker = ({getnamePackages}) => {
                   </div>
                   <div>
                    <ul className="list_section text-sm pl-5 my-2">
-                   <li className="pl-6 text-base font-medium">Included Tour</li>
+                   <li className="pl-6 text-base font-medium">Sites to Sight en route Tour</li>
                      {value.includes.map(data =>{
                       return(
                         <li><FaCheckCircle className="text-primary" />{data}</li>
@@ -99,3 +99,4 @@ export const DoubleDacker = ({getnamePackages}) => {
     </div>
   );
 };
+

@@ -16,6 +16,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaUserLarge } from "react-icons/fa6";
 import { LuClock9 } from "react-icons/lu";
 import { FaMobileScreenButton } from "react-icons/fa6";
+import map from "../../../assest/images/map.png";
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -102,8 +104,7 @@ export const HolidayInfoSection = ({ realData }) => {
                     : "py-3 w-full text-center"
                 }
               >
-                Included With Pass
-              </li>
+Sites & Attractions              </li>
               <li
                 onClick={() => setSelectedItem("tickets")}
                 className={
@@ -122,20 +123,15 @@ export const HolidayInfoSection = ({ realData }) => {
                     : "py-3 w-full text-center"
                 }
               >
-                FAQs
+                Map
               </li>
             </ul>
           </div>
           {selectedItem == "pass" ?  (
             <div className="my-2 p-4 bg-grayBG text-black">
-        <p className="text-lg w-11/12 mx-auto">Included</p>
+        {/* <p className="text-lg w-11/12 mx-auto">Included</p> */}
         <ul className="list_item flex  w-11/12 gap-10 ml-7  my-3 included_section">
           <div>
-            <p className="text-lg flex gap-2 items-center -ml-4">
-              {" "}
-              <FaCheck />
-              ALONG WITH TOUR
-            </p>
             {Array.isArray(realData?.includes) &&
               realData.includes.map((value) => (
                 <li className="ml-5" key={value}>
@@ -157,27 +153,26 @@ export const HolidayInfoSection = ({ realData }) => {
             <>
               <div className="main_ticket w-full p-4 bg-white text-black">
                 <div className="nested_tickets">
-                  <h1 className="text-lg font-medium">
-                    Specific Start Date:
-                  </h1>
-                  <li className="text-sm ">
-                    Valid for 48 consecutive hours starting from your selected
-                    start date, or time of purchase (if selected start date is
-                    the same day as purchase).
+                <li className="text-sm ">
+                  Once you start using your Hop on Hop off tour ticket, it will be valid for a specific duration. This means that from the moment you first board the bus and activate your ticket, you can enjoy unlimited rides and hop on and off at any stop within the designated time frame.
                   </li>
-                  <h1 className="text-lg font-medium">
-                    Flexible Start Date:
-                  </h1>
                   <li className="text-sm ">
-                    Valid for 48 consecutive hours starting from the time when
-                    your tickets are scanned by our staff.
+                  For example, if you purchase a 24-hour ticket and begin using it at 10:00 AM, you will have access to the tour buses until 10:00 AM the following day.
+                  During this period, you can explore Downtown NYC at your own pace, getting off at any stop that catches your interest and rejoining the tour whenever you're ready.
+
                   </li>
-                  <h1 className="text-lg font-medium">All Options:</h1>
+                 
                   <li className="text-sm ">
-                    Brooklyn Tour, Liberty Cruise (No Sky Deck access, General
-                    Admission only), Holiday Lights Tour with Entertaining
-                    Host and Night Tour with Entertaining Host are valid for a
-                    single ride only and require reservations after purchase.
+                  If you purchase a single day ticket, your ticket is only valid for the same day irrespective of when you commence its use.
+                  </li>
+                  <li className="text-sm ">
+                  Tickets for boat cruises are valid only for single entry.
+                  </li>
+                  <li className="text-sm ">
+                  Customers are required to purchase a minimum of two drinks of their choice in addition to the purchase of comedy tickets.
+                  </li>
+                  <li className="text-sm ">
+                  Please keep in mind that the validity period of your ticket starts from the moment of your first usage. So, make the most of your time and take full advantage of the flexibility and convenience offered by our Hop on Hop off tour.
                   </li>
                 </div>
               </div>
@@ -185,91 +180,12 @@ export const HolidayInfoSection = ({ realData }) => {
           ) : (
 
             <div className="faqs_section bg-grayBG">
-              <Accordion
-                expanded={expandedFaqs === "panel1"}
-                onChange={handleChangeFaqs("panel1")}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
-                >
-                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                    General settings
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Nulla facilisi. Phasellus sollicitudin nulla et quam
-                    mattis feugiat. Aliquam eget maximus est, id dignissim
-                    quam.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion
-                expanded={expandedFaqs === "panel2"}
-                onChange={handleChangeFaqs("panel2")}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2bh-content"
-                  id="panel2bh-header"
-                >
-                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                    Users
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Donec placerat, lectus sed mattis semper, neque lectus
-                    feugiat lectus, varius pulvinar diam eros in elit.
-                    Pellentesque convallis laoreet laoreet.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion
-                expanded={expandedFaqs === "panel3"}
-                onChange={handleChangeFaqs("panel3")}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel3bh-content"
-                  id="panel3bh-header"
-                >
-                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                    Advanced settings
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis
-                    vel est augue.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion
-                expanded={expandedFaqs === "panel4"}
-                onChange={handleChangeFaqs("panel4")}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel4bh-content"
-                  id="panel4bh-header"
-                >
-                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                    Personal data
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis
-                    vel est augue.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            </div>
+            <Accordion
+              onChange={handleChangeFaqs("panel1")}
+            >
+                <img src={map} alt="MAP" /> 
+            </Accordion>
+          </div>
           )} 
       
 
@@ -284,7 +200,7 @@ export const HolidayInfoSection = ({ realData }) => {
       </div>
       <div className="info_section w-full bg-grayBG p-4 my-4">
         <div className="nested_info_section w-full text-black">
-          <div className="">
+          <div className="text-sm">
             <h1 className="text-left text-2xl py-2">Boarding Info</h1>
             <div className="flex items-start justify-between flex-col my-2 gap-4 w-full">
               <div className="w-full">
@@ -317,7 +233,7 @@ export const HolidayInfoSection = ({ realData }) => {
                   <FaMobileScreenButton />
                   How to board:{" "}
                 </span>
-                Scan your e-pass, no print-outs needed{" "}
+                Bring your e-ticket, voucher, reservation in paper or electronic form on your phone or other devices for validation and enjoy an unforgettable adventure
               </div>
             </div>
             <div className="flex justify-between gap-4  flex-col items-start w-full">
@@ -359,3 +275,5 @@ export const HolidayInfoSection = ({ realData }) => {
     </div>
   );
 };
+
+

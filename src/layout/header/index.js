@@ -251,7 +251,8 @@ export const Header = ({ getnamePackages }) => {
             </li>
             <li className="py-1">
               {" "}
-              <NavLink to={"/about-us"}> About Us</NavLink>
+              {/* <NavLink to={"/about-us"}> About Us</NavLink> */}
+              <a href="https://newyorkiconiccruises.com/about/" >About Us</a>
             </li>
             <li className="py-1">Live Map</li>
           </ul>
@@ -275,3 +276,4 @@ export const Header = ({ getnamePackages }) => {
     // </div>
   );
 };
+
