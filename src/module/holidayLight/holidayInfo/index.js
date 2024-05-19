@@ -17,6 +17,7 @@ import { FaUserLarge } from "react-icons/fa6";
 import { LuClock9 } from "react-icons/lu";
 import { FaMobileScreenButton } from "react-icons/fa6";
 import map from "../../../assest/images/map.png";
+import nightmap from '../../../assest/images/black.jpg'
 
 
 const Accordion = styled((props) => (
@@ -182,8 +183,11 @@ Sites & Attractions              </li>
             <div className="faqs_section bg-grayBG">
             <Accordion
               onChange={handleChangeFaqs("panel1")}
-            >
-                <img src={map} alt="MAP" /> 
+            >{ realData?.heading === "Night Tour (Black Line)" ? 
+            <img src={nightmap} alt="MAP" /> : 
+            <img src={map} alt="MAP" /> 
+        }
+                
             </Accordion>
           </div>
           )} 
@@ -212,18 +216,19 @@ Sites & Attractions              </li>
                   </span>{" "}
                   Frequent departures daily
                 </div>
-                <div className="flex gap-1 items-center flex-wrap">
+                <div className="items-center">
                   {" "}
                   <span className="font-medium flex gap-1 items-center">
                     {" "}
                     <FaLocationDot />
                     Departure point:{" "}
-                    {realData?.departureStart && realData?.departureStart}
+            
                   </span>{" "}
+                 
                   <p className="text-xs">
-                    {realData?.departurePoint && realData?.departurePoint}
+                    {realData?.departurePoint}
                   </p>
-                  <p className="text-xs">{realData?.tips && realData?.tips}</p>
+                  <p className="text-xs">{realData?.tips}</p>
                 </div>
               </div>
               <div className="flex gap-2 items-start w-full">

@@ -6,7 +6,7 @@ import { MdArrowDropDown } from "react-icons/md";
 
 import Fade from "@mui/material/Fade";
 import { ToggleSidebars } from "../sidebar";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 
@@ -30,7 +30,7 @@ export const Header = ({ getnamePackages }) => {
   const handleCloseMoreOptions = () => {
     setAnchorElMoreOptions(null);
   };
-  
+ 
   // const handleLoginClick = () => {
   //   navigate("/signin"); 
   // };
@@ -44,9 +44,9 @@ export const Header = ({ getnamePackages }) => {
             <ToggleSidebars getnamePackages={getnamePackages} />
           </div>
           <div className="header_img">
-            <NavLink to={"/"}>
+            <Link to="/">
               <img src={NY_Logo} alt="NY_Logo" className="w-36" />
-            </NavLink>
+            </Link>
           </div>
           <div className="links flex items-center gap-2">
             <ul className="flex items-center  gap-6">

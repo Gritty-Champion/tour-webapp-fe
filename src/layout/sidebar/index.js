@@ -8,7 +8,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const ToggleSidebars = ({getnamePackages}) => {
   const [isOpen, setIsopen] = useState(false);
@@ -41,13 +41,15 @@ export const ToggleSidebars = ({getnamePackages}) => {
         <div className={`sidebar ${isOpen == true ? "active" : ""}`}>
           <div className="sd-header">
             {/* <h4 className="mb-0">Sidebar Header</h4> */}
+            <Link to="/">
             <img src={NY_Logo} alt="NY_Logo" className="w-36" />
+            </Link>
             <div className="cursor-pointer" onClick={ToggleSidebar}>
               <RxCross2 className="text-2xl" />
             </div>
           </div>
           <div className="sd-body">
-            <ul>
+            <ul onClick={ToggleSidebar}>
               <li>
                 <a className="sd-link" onClick={() =>
                     getnamePackages("Hop-on-Hop-off-downtown-tour")
@@ -85,7 +87,13 @@ export const ToggleSidebars = ({getnamePackages}) => {
                   }>Time Square Live Comedy Show</a>
               </li>
               </div>
-
+              <div className="pl-0">
+              <li>
+                <a className="sd-link" onClick={() =>
+                    getnamePackages("liberty-boat-cruises")
+                  }>Liberty boat Cruises</a>
+              </li>
+              </div>
               {/* <div className="pl-0">
               <li>
                 <a className="sd-link" onClick={() => getnamePackages("brooklyn-express-tour")}>Brooklyn Express Tour</a>

@@ -272,8 +272,7 @@ export let dammyDataSingleBus = [
   "Broadway"
    ],
    departureStart: `Hop on Hop off tours: `,
-   departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-   Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+   departurePoint: `W 47th Street & 7th Avenue New York,NY 10036`,
    tips: "Our agents are in Orange Uniform.",
    departureTime: `Tour Start Time: Hop on Hop off`,
    weekDay: `Everyday`,
@@ -505,8 +504,7 @@ export let dammyDataSingleBus = [
      "Convenient and easy to use",
   ],
    departureStart: `Hop on Hop off tours: `,
-   departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-   Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+   departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
    tips: "Our agents are in Orange Uniform.",
    departureTime: `Tour Start Time: Hop on Hop off`,
    weekDay: `Everyday`,
@@ -626,8 +624,7 @@ export let dammyDataDoubleBus = [
         "Union Square",
       ],
       departureStart: `Hop on Hop off tours: `,
-      departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-      Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+      departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
       tips: "Our agents are in Orange Uniform.",
       departureTime: `Tour Start Time: Hop on Hop off`,
       weekDay: `Everyday`,
@@ -712,8 +709,7 @@ export let dammyDataDoubleBus = [
         "Rockefeller Center NBC Studios",
       ],
       departureStart: `Hop on Hop off tours: `,
-      departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-      Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+      departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
       tips: "Our agents are in Orange Uniform.",
       departureTime: `Tour Start Time: Hop on Hop off`,
       weekDay: `Everyday`,
@@ -825,8 +821,7 @@ export let dammyDataIconic = [
       "You can save money on transportation costs and admission tickets. Book your tickets now",
     ],
     departureStart: `Hop on Hop off tours: `,
-    departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-    Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+    departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
     tips: "Our agents are in Orange Uniform.",
     departureTime: `Tour Start Time: Hop on Hop off`,
     weekDay: `Everyday`,
@@ -883,8 +878,7 @@ export let dammyDataIconic = [
   "The Skyscraper Museum"
       ],
     departureStart: `Hop on Hop off tours: `,
-    departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-    Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+    departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
     tips: "Our agents are in Orange Uniform.",
     departureTime: `Tour Start Time: Hop on Hop off`,
     weekDay: `Everyday`,
@@ -938,8 +932,7 @@ export let dammyDataIconic = [
       `Do not forget to bring your reservation/confirmation detail.`,
       `If you have any question or need further assistance, please feel free to contact our customer support team: contact@newyorkiconiccruises.com`,
     ],
-    departurePoint: `West 56th Street & 7th Avenue, New York, NY 10106 (Front of Red Eye Grill)
-    Night Tour: W 47th Street & 7th Avenue New York, NY 10036 (in front of Olive Garden)`,
+    departurePoint: `W 47th Street & 7th Avenue New York, NY 10036`,
     tips: "Our agents are in Orange Uniform.",
     regularPrice: "124",
     dealFrom: "39.99",

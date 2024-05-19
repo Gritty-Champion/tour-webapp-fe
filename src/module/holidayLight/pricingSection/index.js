@@ -154,8 +154,12 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
 
   const getTotalAmount=() =>{
        console.log(adultCost , kidCost);
-    setTotalAmount(adultCost + kidCost)
-    navigate("/reserve/confirm");
+       setTotalAmount(adultCost + kidCost);
+       localStorage.setItem("realData",JSON.stringify(realData));
+       localStorage.setItem("kids",kidCost/Number(realData?.childPirce));
+       localStorage.setItem("adults",adultCost/Number(realData?.adultPrice));
+       localStorage.setItem("totalCost",adultCost+kidCost)
+       navigate("/reserve/confirm");
   }
 
 

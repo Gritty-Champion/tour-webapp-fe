@@ -87,3 +87,232 @@
   .button-credit-card:hover {
     background-color: #4281CB;
   }
+
+  .nested_card_pricing {
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    padding: 15px 11px 0px 11px;
+    border-radius: 8px;
+  }
+  .nested_card_pricing .extra_feature div {
+    border-right: 1px solid gray;
+  }
+  .nested_card_pricing .extra_feature div:last-child {
+    border: none;
+  }
+  .star_section {
+    border: none !important;
+  }
+  .flex_date,.quantity {
+    display: flex;
+    padding: 5px;
+    background-color: #f1f1f1;
+    flex-direction: row;
+    margin-top: 10px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    margin-bottom: 5px;
+    /* padding: 4px; */
+  }
+  .flex_date div {
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+     width: 100%;
+     margin: 0 auto;
+     padding: 4px;
+     text-align: center;
+  }
+  .quantity div:first-child, .quantity div:last-child{ 
+      background-color: #fff;
+      -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      width: 20px;
+      text-align: center;
+  }
+  .btn_buyNow button,.save_more{
+    background-color: #FB520E;
+      border-color: #FB520E;
+      border-radius: 24px;
+      position: relative;
+      background-repeat: no-repeat;
+      color: white;
+      width: 100%;
+      padding: 8px 0px;
+  }
+  .info_section_data,.other_section,.events_better{
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+  }
+  .save_more{
+    width:120px !important;
+  }
+  .events_better h1{
+     border-bottom: 1px solid gray;
+     margin: 0px 14px;
+     padding: 10px 0px;
+  }
+  
+  .nested_card_pricing {
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    padding: 15px 11px 0px 11px;
+    border-radius: 8px;
+  }
+  .nested_card_pricing .extra_feature div {
+    border-right: 1px solid gray;
+  }
+  .nested_card_pricing .extra_feature div:last-child {
+    border: none;
+  }
+  .star_section {
+    border: none !important;
+  }
+  .flex_date,.quantity {
+    display: flex;
+    padding: 5px;
+    background-color: #f1f1f1;
+    flex-direction: row;
+    margin-top: 10px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    margin-bottom: 5px;
+    /* padding: 4px; */
+  }
+  .flex_date div {
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+     width: 100%;
+     margin: 0 auto;
+     padding: 4px;
+     text-align: center;
+  }
+  .quantity div:first-child, .quantity div:last-child{ 
+      background-color: #fff;
+      -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      width: 20px;
+      text-align: center;
+  }
+  .btn_buyNow button,.save_more{
+    background-color: #FB520E;
+      border-color: #FB520E;
+      border-radius: 24px;
+      position: relative;
+      background-repeat: no-repeat;
+      color: white;
+      width: 100%;
+      padding: 8px 0px;
+  }
+  .info_section_data,.other_section_holiday,.events_better{
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    padding: 10px;
+  
+  }
+  .other_section_holiday{
+    border-radius: 12px;
+  
+  }
+  .other_section_holiday h1{
+    border-bottom: 1px solid gray;
+  }
+  .save_more{
+    width:120px !important;
+  }
+  .events_better h1{
+     border-bottom: 1px solid gray;
+     margin: 0px 14px;
+     padding: 10px 0px;
+  }
+  .css-jgls56-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){
+     border: none !important;
+  }
+  .date_picker  .css-z3c6am-MuiFormControl-root-MuiTextField-root{
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  }
+  .date_picker .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: none !important;
+    border-width: 0px !important;
+  }
+  .date_picker .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+     height: 0.4em !important;
+  }
+  .date_picker .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+      top: -7px !important;
+  }
+  .time_section .css-1elwnq4-MuiPaper-root-MuiAccordion-root{
+     /* height: 40px; */
+     border-radius: 24px !important;
+  }
+  .times{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  gap: 12px;
+  }
+  .time-card{
+  border: 1px solid #ced4da;
+    background-color: #fff;
+    box-shadow: none;
+    font-size: 0.875rem;
+    display: flex;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    align-items: baseline;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    margin-bottom: 0rem;
+    text-align: center;
+    justify-self: center;
+    justify-items: center;
+    border-radius: 24px;
+    /* color: #ED1941; */
+    width: 100%;
+  }
+  .time-card button{
+   width: 100%;
+  }
+  .time_active{
+  color: #fff;
+    background-color: #FB520E;
+  }
+  @media (max-width:768px) {
+    .pricing_info{
+      width: 100%;
+    }
+  }
+  
