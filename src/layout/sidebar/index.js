@@ -10,7 +10,7 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 
-export const ToggleSidebars = ({getnamePackages}) => {
+export const ToggleSidebars = ({getnamePackages,packages}) => {
   const [isOpen, setIsopen] = useState(false);
   const [isDropOpen, setIsDropOpen] = useState(false);
   const [isMoreOpen, setMoreOpen] = useState(false);
@@ -50,80 +50,15 @@ export const ToggleSidebars = ({getnamePackages}) => {
           </div>
           <div className="sd-body">
             <ul onClick={ToggleSidebar}>
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("Hop-on-Hop-off-downtown-tour")
-                  }>Hop-on Hop-off All city tour Pass (Red Line)</a>
-              </li>
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("all-city-iconic-express-tour")
-                  }>All city Iconic Express Tour</a>
-              </li>
-              <div className="pl-0">
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("48Hours-iconic-access-pass")
-                  }>48 Hrs Hop on Hop off Iconic Pass</a>
-              </li>
-
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("5day-ultimate-unlimited-access-pass")
-                  }>Ultimate Unlimited Access Pass</a>
-              </li>
-              </div>
-
-              <div className="pl-0">
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("night-tour")
-                  }>Night Tour (Black Line)</a>
-              </li>
-
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("times-square-live-commedy-show")
-                  }>Time Square Live Comedy Show</a>
-              </li>
-              </div>
-              <div className="pl-0">
-              <li>
-                <a className="sd-link" onClick={() =>
-                    getnamePackages("liberty-boat-cruises")
-                  }>Liberty boat Cruises</a>
-              </li>
-              </div>
-              {/* <div className="pl-0">
-              <li>
-                <a className="sd-link" onClick={() => getnamePackages("brooklyn-express-tour")}>Brooklyn Express Tour</a>
-              </li>
-              <li>
-                <a className="sd-link" onClick={() => getnamePackages("1-day-iconic-access-pass")}>1 day Iconic Access Pass</a>
-              </li>
-              </div>
-              <li>
-              <NavLink className="sd-link" to="/iconic-holiday-lights"> Holiday Lights</NavLink>
-              </li>
-              <li>
-                <a className="sd-link"  onClick={() => getnamePackages("night-tour")}>Night Tours</a>
-              </li> */}
-              {/* <div className="dropdown">
-                <li
-                  className="sd-link justify-between items-center"
-                  onClick={toggleDropdown}
-                >
-                  {" "}
-                  <div> Holidays Tour</div>{" "}
-                  <div>{isDropOpen ? <FaAngleDown /> : <FaAngleRight />}</div>{" "}
-                </li>
-                {isDropOpen && (
-                  <div className="dropdown-content w-full z-50">
-                    <li>Iconic Tours</li>
-                    <li>Holiday Light Tour</li>
-                  </div>
-                )}
-              </div> */}
+              {
+                packages?.map(pack=>
+                  (  <li>
+                    <a className="sd-link" onClick={() =>
+                        getnamePackages(pack?.packageLabel)
+                      }>{pack?.packageLabel}</a>
+                  </li>)
+                )
+              }
               <div className="dropdown">
                 <li
                   className="sd-link justify-between items-center"

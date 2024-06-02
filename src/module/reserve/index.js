@@ -8,7 +8,7 @@ import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 import { FaRegClock, FaRegThumbsUp } from "react-icons/fa";
 import "./index.css";
 import { ModalForm } from "../../layout/modal/inddex";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import {
   Accordion,
@@ -44,6 +44,11 @@ let timeData = [
   },
 ];
 export const ConfirmationForm = ({ data, totalAmount }) => {
+  const [couponData, setCouponData] = useState(null);
+  useEffect(() => {
+    fetch('https://api.nyiconictours.com/coupon/all').then(
+     response=>response.json()).then(data=>setCouponData(data?.data));
+ }, []); 
   let realData = JSON.parse(localStorage.getItem("realData"));
   let AllPrice = JSON.parse(localStorage.getItem("totalAmount"));
   let [formdata, setFormData] = useState({
@@ -170,13 +175,13 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
     if(localStorage.getItem("kids")){ 
     let kidsNum = Number(localStorage.getItem("kids"))
     setkidPrice(kidsNum) 
-    setKidCost(kidsNum*Number(realData.childPirce))
+    setKidCost(kidsNum*Number(realData?.kidsOfferPrice))
     localStorage.removeItem("kids")
     }
     if(localStorage.getItem("adults")){
      let adultsNum = Number(localStorage.getItem("adults"))
      setAdultPrice(adultsNum)
-     setAdultCost(adultsNum*Number(realData?.adultPrice))
+     setAdultCost(adultsNum*Number(realData?.adultOfferPrice))
      localStorage.removeItem("adults")
     }
   })
@@ -187,18 +192,20 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
 
   // Function to apply coupon and fetch discount from API
   const applyCoupon = () => {
-    if(couponCode=="WINTER"){
-      setCouponCost((((kidCost+adultCost)*20)/100).toFixed(2));
+    if(couponCode==couponData?.couponCode){
+      setCouponCost((((kidCost+adultCost)*Number(couponData?.discountPercentage))/100).toFixed(2));
+      localStorage.setItem("couponCode",couponCode)
     }
     else{
       setCouponCost(0)
     }
+
   };
   return (
     <div className="confirmation_section w-full bg-white h-full h-screen">
       <div className="shadow-boxShadowHeader bgColor">
         <header className="w-4/5 mx-auto">
-          <img src={NY_Logo} alt="ny_logo" className="w-40" />
+          <Link to="/"><img src={NY_Logo} alt="ny_logo" className="w-40" /></Link>
         </header>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -259,19 +266,19 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                 <div className="card_pricing w-full relative">
                   <div className="sticky top-0 mb-4">
                     <div className="nested_card_pricing text-black ">
-                      <h1 className="text-center">{realData?.heading}</h1>
+                      <h1 className="text-center">{realData?.packageLabel}</h1>
                       <div className="extra_feature flex gap-3 items-center justify-between my-3">
                         <div className="flex flex-col items-center px-1 w-full">
                           <BiWorld color="blue" />
                           <p className="text-xs text-center py-1">
-                            Most Iconic Tour
+                          {realData?.packageTag}
                           </p>
                         </div>
 
                         <div className="text-primary flex flex-col items-center px-1 w-full">
                           <SiFireship />
                           <p className="text-xs text-center py-1">
-                            103 + bought in past 24 hours
+                          {realData.bought} + bought in past 24 hours
                           </p>
                         </div>
                         <div className="flex flex-col items-center px-1 w-full">
@@ -282,7 +289,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                             <MdOutlineStar color="#ffc107" />
                             <MdOutlineStarBorder />
                           </div>
-                          <p className="text-xs text-center py-1">4.0 Stars</p>
+                          <p className="text-xs text-center py-1">{realData?.review} Stars</p>
                         </div>
                       </div>
                       <div className="my-4">
@@ -352,7 +359,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                 </div>
               </div> */}
                         <p className="text-center">
-                          Activate anytime within 12 months of purchase.
+                        {realData?.packageNote}
                         </p>
 
                         {urlSection == "brooklyn-express-tour" ? (
@@ -368,14 +375,14 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                               <div className="flex gap-3 w-full">
                                 {/* <del className="text-xs">$124</del>{" "} */}
                                 <p className="text-2xl text-red-500">
-                                  ${realData?.adultPrice}
+                                  ${realData?.adultOfferPrice}
                                 </p>
                               </div>
                               <div className="quantity w-full flex items-center justify-between px-5">
                                 <div
                                   onClick={() =>
                                     onClickFuncAdultDecrement(
-                                      realData?.adultPrice
+                                      realData?.adultOfferPrice
                                     )
                                   }
                                   className="cursor-pointer"
@@ -385,7 +392,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                                 <div>{adultPrice}</div>
                                 <div
                                   onClick={() =>
-                                    onClickFuncAdult(realData?.adultPrice)
+                                    onClickFuncAdult(realData?.adultOfferPrice)
                                   }
                                   className="cursor-pointer"
                                 >
@@ -404,14 +411,14 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                               <div className="flex gap-3 w-full">
                                 {/* <del className="text-xs">$124</del>{" "} */}
                                 <p className="text-2xl text-red-500">
-                                  ${realData?.childPirce}
+                                  ${realData?.kidsOfferPrice}
                                 </p>
                               </div>
                               <div className="quantity w-full flex items-center justify-between px-5">
                                 <div
                                   onClick={() =>
                                     onClickFuncKidDecrement(
-                                      realData?.childPirce
+                                      realData?.kidsOfferPrice
                                     )
                                   }
                                   className="cursor-pointer"
@@ -421,7 +428,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                                 <div>{kidPrice}</div>
                                 <div
                                   onClick={() =>
-                                    onClickFuncKid(realData?.childPirce)
+                                    onClickFuncKid(realData?.kidsOfferPrice)
                                   }
                                   className="cursor-pointer"
                                 >

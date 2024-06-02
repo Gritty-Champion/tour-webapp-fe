@@ -7,6 +7,7 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import busimg from "../../../assest/images/img3.jpg";
 import { RxCross2 } from "react-icons/rx";
+import { baseFileUrl } from "../../../config/constant";
 
 const style = {
   position: "absolute",
@@ -113,34 +114,53 @@ const slicedData = dammydata.slice(0, numberOfItemsToShow);
 // console.log("endItems",endItems);
 export const AlbumHoliday = ({realData}) => {
   const [open, setOpen] = React.useState(false);
-  const [modalData, setModalData] = useState([]);
+  const [modalData, setModalData] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const image1 = `${baseFileUrl}${realData?.amazingPhoto1}`;
+  const image2 = `${baseFileUrl}${realData?.amazingPhoto2}`;
+  const image3 = `${baseFileUrl}${realData?.amazingPhoto3}`;
+  const image4 = `${baseFileUrl}${realData?.amazingPhoto4}`;
+  const image5= `${baseFileUrl}${realData?.amazingPhoto5}`;
   const onclickFunc = (id) => {
     handleOpen();
-    let filterData =realData?.galleryImg.filter((value, ind) => ind == id);
-    console.log("FilterData", filterData);
-    setModalData(filterData);
+    
+    setModalData(id);
   };
   return (
     <div className="">
       <div className="album_section">
         <div className="album_one w-full relative">
-          {realData?.galleryImg && realData?.galleryImg.map((value, id) => {
-            return (
-              <>
-                <div
-                  key={id}
-                  onClick={() => onclickFunc(id)}
+               <div
+                  onClick={() => onclickFunc(image1)}
                   className="relative"
                 >
-                  <img src={value} alt="busimg" />
-                  {/* <p>{value.desc}</p> */}
+                  <img src={image1} alt="busimg" />
                 </div>
-              </>
-            );
-          })}
+                <div
+                  onClick={() => onclickFunc(image2)}
+                  className="relative"
+                >
+                  <img src={image2} alt="busimg" />
+                </div>
+                <div
+                  onClick={() => onclickFunc(image3)}
+                  className="relative"
+                >
+                  <img src={image3} alt="busimg" />
+                </div>
+                <div
+                  onClick={() => onclickFunc(image4)}
+                  className="relative"
+                >
+                  <img src={image4} alt="busimg" />
+                </div>
+                <div
+                  onClick={() => onclickFunc(image5)}
+                  className="relative"
+                >
+                  <img src={image5} alt="busimg" />
+                </div>
         </div>
        
       </div>
@@ -161,20 +181,16 @@ export const AlbumHoliday = ({realData}) => {
       >
         <Fade in={open}>
           <Box sx={style}>
-            {modalData.map((value, id) => {
-              return (
-                <div className="bg-white modal_section" key={id}>
+                <div className="bg-white modal_section">
                   <div
                     className="absolute -top-3 -right-3 bg-primary text-white p-2 w-8 h-8 rounded-full cursor-pointer"
                     onClick={handleClose}
                   >
                     <RxCross2 />
                   </div>
-                  <img src={value} alt={id} className="w-full" />
+                  <img src={modalData} alt="Image not available" className="w-full" />
                  
                 </div>
-              );
-            })}
           </Box>
         </Fade>
       </Modal>

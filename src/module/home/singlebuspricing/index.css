@@ -74,3 +74,10 @@
 .card_content del span{
     color: black;
 }
+
+.clipped-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }

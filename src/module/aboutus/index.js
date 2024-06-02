@@ -3,10 +3,13 @@ import Slider from "react-slick";
 import img2 from "../../assest/images/img2.jpg";
 import img3 from "../../assest/images/img3.jpeg";
 import img4 from "../../assest/images/img3.jpg";
+import about from "../../assest/images/about.jpg"
 import "./index.css";
+import { Image } from '@mui/icons-material';
+import { baseFileUrl } from '../../config/constant';
 
-export const AboutUsSection = () => {
-
+export const AboutUsSection = ({data}) => {
+    const url = `${baseFileUrl}${data?.imageUrl}`
     let settings = {
         dots: true,
         infinite: false,
@@ -48,26 +51,7 @@ export const AboutUsSection = () => {
              <h1 className='text-4xl text-center my-6'>About Us</h1> 
              <div className='aboutus_slider w-full mx-auto'>
                 <div className='nested_cards_about'>
-               <Slider {...settings}>
-                <div className='box'>
-                    <img src={img2} alt='img2' className='w-80'/>
-                </div>
-                <div className='box'>
-                    <img src={img2} alt='img3' className='w-80'/>
-                </div>
-                <div className='box'>
-                    <img src={img4} alt='img4' className='w-80'/>
-                </div>
-                <div className='box'>
-                    <img src={img4} alt='img4' className='w-80'/>
-                </div>
-                <div>
-                    <img src={img4} alt='img4' className='w-80'/>
-                </div>
-                <div>
-                    <img src={img4} alt='img4' className='w-80'/>
-                </div>
-               </Slider>
+                <img src={url}/>
              </div>
           </div>
           <div className='content-section'>

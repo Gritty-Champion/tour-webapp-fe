@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { NY_Logo } from "../../assest";
 import Menu from "@mui/material/Menu";
@@ -10,10 +10,20 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 
-export const Header = ({ getnamePackages }) => {
+export const Header = ({ getnamePackages, packages,category }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElMoreOptions, setAnchorElMoreOptions] = useState(null);
+  const [data, setData] = useState(null);
+  
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    fetch("https://api.nyiconictours.com/headline/all")
+      .then((response) => response.json())
+      .then((data) => setData(data?.data));
+  }, []);
+ 
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,9 +40,9 @@ export const Header = ({ getnamePackages }) => {
   const handleCloseMoreOptions = () => {
     setAnchorElMoreOptions(null);
   };
- 
+
   // const handleLoginClick = () => {
-  //   navigate("/signin"); 
+  //   navigate("/signin");
   // };
 
   return (
@@ -41,7 +51,7 @@ export const Header = ({ getnamePackages }) => {
       <div className="header_section w-full h-16">
         <div className="nested_header_section w-4/5 mx-auto py-2 h-full flex justify-between items-center">
           <div className="sidebar_section">
-            <ToggleSidebars getnamePackages={getnamePackages} />
+            <ToggleSidebars getnamePackages={getnamePackages} packages={packages} />
           </div>
           <div className="header_img">
             <Link to="/">
@@ -62,17 +72,16 @@ export const Header = ({ getnamePackages }) => {
               >
                 Tickets & Packages <MdArrowDropDown className="text-2xl" />
               </li>
-              <li onClick={() => getnamePackages("night-tour")}>Night Tour</li>
-              {/* <li>
-                {" "}
-                <NavLink to="/iconic-holiday-lights"> Holiday Lights</NavLink>
-              </li> */}
-              <li
-                className="py-1 cursor-pointer"
-                onClick={() => getnamePackages("Hop-on-Hop-off-downtown-tour")}
-              >
-                Hop-on Hop-off All City Tour (Red Line)
-              </li>
+              {packages
+                ?.filter((pack) => pack?.isNavigate)
+                .map((pack) => (
+                  <li
+                    className="py-1 cursor-pointer"
+                    onClick={() => getnamePackages(pack?.packageLabel)}
+                  >
+                    {pack?.packageLabel}
+                  </li>
+                ))}
               {/* <li>How To Use My Tour Ticket</li> */}
               <li
                 id="fade-button"
@@ -88,15 +97,6 @@ export const Header = ({ getnamePackages }) => {
             <button className="py-2 px-4  bg-primary text-white rounded-3xl">
               <NavLink to={"/tour"}> Buy Tickets</NavLink>
             </button>
-
-            {/* <Box sx={{ display: "flex", flex: 1,alignItems: "center" , backgroundColor:"red" }}> */}
-            {/* <Tooltip title="Login" arrow>
-              <IconButton sx={{color : "black"}} onClick={handleLoginClick}>
-              <LoginIcon sx={{ fontSize: "2rem" }} />
-              </IconButton>
-              </Tooltip> */}
-            {/* </Box> */}
-
           </div>
         </div>
 
@@ -138,93 +138,25 @@ export const Header = ({ getnamePackages }) => {
           anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
         >
           <div className="flex justify-between items-center value_section">
-            <div className="flex flex-col p-4">
-              <h1>Hop-On Hop-off Tour</h1>
-              <ul className="text-xs my-2">
-                <li
-                  className="py-1 cursor-pointer"
-                  onClick={() =>
-                    getnamePackages("Hop-on-Hop-off-downtown-tour")
-                  }
-                >
-                  Hop-on Hop-off All City Tour (Red Line)
-                </li>
-                {/* <li className="py-1 cursor-pointer">
-                  <NavLink to="/downtown-liberty-cruise-same-day">
-                    Downtown Liberty Cruise
-                  </NavLink>
-                </li> */}
-                {/* <li
-                  className="py-1 cursor-pointer"
-                  onClick={() => getnamePackages("hop-on-hop-off-harlem-tour")}
-                >
-                   Harlem Tour
-                </li> */}
-              </ul>
-              <div>
-                {/* <h1 style={{ fontSize: "24px" }}>Hop-On Hop-off Tour</h1> */}
-                <ul>
-                  <li
-                    className="py-1 cursor-pointer !text-xs"
-                    onClick={() => getnamePackages("liberty-boat-cruises")}
-                  >
-                    Liberty boat Cruises
-                  </li>
-                </ul>
+            {category.map((cat) => (
+              <div className="flex flex-col p-4">
+                <h1>{cat?.categoryName}</h1>
+                {packages
+                  ?.filter(
+                    (pack) => pack?.category?.categoryName == cat?.categoryName
+                  )
+                  .map((pack) => (
+                    <ul className="text-xs my-2">
+                      <li
+                        className="py-1 cursor-pointer"
+                        onClick={() => getnamePackages(pack?.packageLabel)}
+                      >
+                        {pack?.packageLabel}
+                      </li>
+                    </ul>
+                  ))}
               </div>
-            </div>
-            <div className="flex flex-col p-4">
-              <h1> Iconic Access Passes </h1>
-              <ul className="text-xs my-2">
-                {/* <li
-                  className="py-1 cursor-pointer"
-                  onClick={() => getnamePackages("1-day-iconic-access-pass")}
-                >
-                  1 day Iconic Access Pass
-                </li> */}
-                <li
-                  className="py-1 cursor-pointer"
-                  onClick={() => getnamePackages("48Hours-iconic-access-pass")}
-                >
-                  48 Hour Iconic Access Pass
-                </li>
-                <li
-                  className="py-1 cursor-pointer"
-                  onClick={() =>
-                    getnamePackages("5day-ultimate-unlimited-access-pass")
-                  }
-                >
-                  5 Day Ultimate Unlimited Iconic Access Pass
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex justify-between items-center">
-            <div className="flex flex-col p-4">
-              <h1> Express Tours </h1>
-              <ul className="text-xs my-2">
-                {/* <li
-                  className="py-1 cursor-pointer"
-                  onClick={() => getnamePackages("brooklyn-express-tour")}
-                >
-                  Brooklyn Express Tour
-                </li> */}
-                <li
-                  className="py-1 cursor-pointer"
-                  onClick={() =>
-                    getnamePackages("all-city-iconic-express-tour")
-                  }
-                >
-                  All City Express Tour
-                </li>
-                <li
-                  className="py-1 cursor-pointer"
-                  onClick={() => getnamePackages("night-tour")}
-                >
-                  Night Tour
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </Menu>
 
@@ -268,8 +200,7 @@ export const Header = ({ getnamePackages }) => {
             <li className="py-1">
               {" "}
               {/* <NavLink to={"/about-us"}> About Us</NavLink> */}
-              <a href="https://newyorkiconiccruises.com/about/" >About Us</a>
-
+              <NavLink to={"/about-us"}>About Us</NavLink>
             </li>
             <li className="py-1">Live Map</li>
           </ul>
@@ -282,10 +213,9 @@ export const Header = ({ getnamePackages }) => {
             direction="left"
             className="text-xl font-bold"
           >
-            Online Ticket Sales Now On:{" "}
+            {data?.white}{" "}
             <a href="#" className="text-yellow-400">
-              Online Ticket Sales Now On: Book Now For 20% Discount Using the
-              Code SPRING
+              {data?.yellow}
             </a>{" "}
           </marquee>
         </div>

@@ -15,6 +15,7 @@ import hoponHopOff from "../../assest/images/Hop-on-Hop-off.jpg";
 import hopOnHopOffDown from "../../assest/images/Hop-on-hop-off-downtown-tour-t.jpg";
 import shutterMusic from "../../assest/images/shutterstock_1432795235-scaled.jpg";
 import { FaLocationDot } from "react-icons/fa6";
+import { baseFileUrl } from "../../config/constant";
 
 let data = [
   {
@@ -74,7 +75,7 @@ let data = [
   },
   {
     id: 7,
-    heading: `Liberty boat Cruises`,
+    heading: `Liberty Boat Cruises`,
     location: `New York`,
     desc: `Experience incredible views of the Statue of Liberty on our cruise, offering unparalleled photo
     opportunities and a celebratory toast to New York City. As you embark on this journey, witness iconic
@@ -130,44 +131,45 @@ let data = [
 
 ];
 
-export const TourSection = ({ getnamePackages }) => {
+export const TourSection = ({ getnamePackages,packages }) => {
   return (
     <div className="tour_card w-full text-black">
       <div className="nested_tour_card w-4/5 mx-auto my-5">
         <div className="">
           <h5>Total</h5>
 
-          {data.map((value) => {
+          {packages.map((value) => {
+              const url = `${baseFileUrl}${value?.mainUrl}`;
             return (
               <div className="card_tour relative" key={value.id}>
-                {value.id === 1 && (
+                {value.orderNumber === 1 && (
                   <div className="badge_card">
                     <span className="z-50">Featured</span>
                   </div>
                 )}
                 <div className="card_desc flex gap-3 items-start">
                   <div className="img_tour">
-                    <img src={value.img} alt={value.img} />
+                    <img src={url} alt={value?.mainUrl} />
                   </div>
                   <div className="">
-                    <h1>{value.heading}</h1>
+                    <h1>{value?.packageLabel}</h1>
                     <div className="my-2">
                       {" "}
                       <span className="flex gap-2 text-xs">
                         <FaLocationDot />
-                        {value.location}
+                        {value?.location}
                       </span>{" "}
                     </div>
-                    <p className="text-base text_desc">{value.desc}</p>
+                    <p className="text-base text_desc">{value?.description}</p>
                     <div className="flex justify-end items-end flex-col">
                       <button
                         className="btn_details"
-                        onClick={() => getnamePackages(value.link)}
+                        onClick={() => getnamePackages(value?.packageLabel)}
                       >
                         View Details
                       </button>
                       <p className="totalValue text-sm">
-                        From ${value.amount}
+                        From ${value?.dealFrom}
                       </p>
                     </div>
                   </div>

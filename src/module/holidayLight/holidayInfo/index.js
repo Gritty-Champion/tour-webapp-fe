@@ -18,6 +18,7 @@ import { LuClock9 } from "react-icons/lu";
 import { FaMobileScreenButton } from "react-icons/fa6";
 import map from "../../../assest/images/map.png";
 import nightmap from '../../../assest/images/black.jpg'
+import { baseFileUrl } from "../../../config/constant";
 
 
 const Accordion = styled((props) => (
@@ -77,7 +78,7 @@ export const HolidayInfoSection = ({ realData }) => {
     setExpandedFaqs(isExpanded ? panel : false);
   };
 
-
+   const mapUrl=`${baseFileUrl}${realData?.mapUrl}`
   
   return (
     <div className="w-8/12 holiday_info">
@@ -85,10 +86,7 @@ export const HolidayInfoSection = ({ realData }) => {
         <div className="nested_info_section w-full text-black">
           <div className="">
             <h1 className="text-left text-2xl py-2">The Experience</h1>
-            {realData?.description &&
-              realData?.description.map((value) => {
-                return <p className="text-sm my-2">{value}</p>;
-              })}
+            <div dangerouslySetInnerHTML={{ __html: realData?.experience }} />
           </div>
         </div>
       </div>{" "}
@@ -142,40 +140,13 @@ Sites & Attractions              </li>
           </div>
         </ul>
         <div className="flex gap-0 flex-wrap">
-          {Array.isArray(realData?.additionalInludes) &&
-            realData.additionalInludes.map((value) => (
-              <li className="ml-5" key={value}>
-                {value}
-              </li>
-            ))}
+        <div dangerouslySetInnerHTML={{ __html: realData?.inclusionInfo }} />
         </div>
       </div>
           ) :   selectedItem == "tickets" ? (
             <>
               <div className="main_ticket w-full p-4 bg-white text-black">
-                <div className="nested_tickets">
-                <li className="text-sm ">
-                  Once you start using your Hop on Hop off tour ticket, it will be valid for a specific duration. This means that from the moment you first board the bus and activate your ticket, you can enjoy unlimited rides and hop on and off at any stop within the designated time frame.
-                  </li>
-                  <li className="text-sm ">
-                  For example, if you purchase a 24-hour ticket and begin using it at 10:00 AM, you will have access to the tour buses until 10:00 AM the following day.
-                  During this period, you can explore Downtown NYC at your own pace, getting off at any stop that catches your interest and rejoining the tour whenever you're ready.
-
-                  </li>
-                 
-                  <li className="text-sm ">
-                  If you purchase a single day ticket, your ticket is only valid for the same day irrespective of when you commence its use.
-                  </li>
-                  <li className="text-sm ">
-                  Tickets for boat cruises are valid only for single entry.
-                  </li>
-                  <li className="text-sm ">
-                  Customers are required to purchase a minimum of two drinks of their choice in addition to the purchase of comedy tickets.
-                  </li>
-                  <li className="text-sm ">
-                  Please keep in mind that the validity period of your ticket starts from the moment of your first usage. So, make the most of your time and take full advantage of the flexibility and convenience offered by our Hop on Hop off tour.
-                  </li>
-                </div>
+              <div dangerouslySetInnerHTML={{ __html: realData?.ticketsInfo }} />
               </div>
             </>
           ) : (
@@ -183,11 +154,8 @@ Sites & Attractions              </li>
             <div className="faqs_section bg-grayBG">
             <Accordion
               onChange={handleChangeFaqs("panel1")}
-            >{ realData?.heading === "Night Tour (Black Line)" ? 
-            <img src={nightmap} alt="MAP" /> : 
-            <img src={map} alt="MAP" /> 
-        }
-                
+            >
+            <img src={mapUrl} alt="MAP" /> 
             </Accordion>
           </div>
           )} 
@@ -214,7 +182,7 @@ Sites & Attractions              </li>
                     {" "}
                     <FaRegCalendarDays /> Dates:
                   </span>{" "}
-                  Frequent departures daily
+                  <div dangerouslySetInnerHTML={{ __html: realData?.boardingDates }} />
                 </div>
                 <div className="items-center">
                   {" "}
@@ -226,9 +194,8 @@ Sites & Attractions              </li>
                   </span>{" "}
                  
                   <p className="text-xs">
-                    {realData?.departurePoint}
+                  <div dangerouslySetInnerHTML={{ __html: realData?.departurePoint }} />
                   </p>
-                  <p className="text-xs">{realData?.tips}</p>
                 </div>
               </div>
               <div className="flex gap-2 items-start w-full">
@@ -238,7 +205,7 @@ Sites & Attractions              </li>
                   <FaMobileScreenButton />
                   How to board:{" "}
                 </span>
-                Bring your e-ticket, voucher, reservation in paper or electronic form on your phone or other devices for validation and enjoy an unforgettable adventure
+                <div dangerouslySetInnerHTML={{ __html: realData?.howToBoard}} />
               </div>
             </div>
             <div className="flex justify-between gap-4  flex-col items-start w-full">
@@ -247,20 +214,12 @@ Sites & Attractions              </li>
                   <span className="font-medium flex gap-1 items-center">
                     <FaUserLarge /> Departure Time:{" "}
                   </span>{" "}
-                  Frequent departures
                 </div>
                 <div className="text-sm">
                   <p>
-                    <span className="font-medium"> {realData?.weekDay} </span>{" "}
-                    {realData?.weekDayTime}
+                  <div dangerouslySetInnerHTML={{ __html: realData?.departureTime}} />
                   </p>
-                  <p>
-                    <span className="font-medium">
-                      {" "}
-                      {realData?.specificDay}{" "}
-                    </span>{" "}
-                    {realData?.specificTime}
-                  </p>
+                 
                 </div>
               </div>
               <div className="flex justify-start items-center flex-wrap gap-2 w-full">
@@ -268,10 +227,11 @@ Sites & Attractions              </li>
                   <LuClock9 />
                   Complete trip duration:{" "}
                 </span>{" "}
-                {realData?.howToBoard &&
-                  realData?.howToBoard.map((value) => {
-                    return <p className="text-xs my-0 py-0">{value}</p>;
-                  })}
+             
+                  <p className="text-xs my-0 py-0">
+                  <div dangerouslySetInnerHTML={{ __html: realData?.completeTripDuration}} />
+                    </p>
+                  
               </div>
             </div>
           </div>

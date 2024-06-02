@@ -105,6 +105,12 @@
   .date_picker .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
       top: -7px !important;
 }
+.date_picker {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
  .time_section .css-1elwnq4-MuiPaper-root-MuiAccordion-root{
      /* height: 40px; */
      border-radius: 24px !important;

@@ -5,21 +5,18 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import { FaFunnelDollar } from "react-icons/fa";
 import { FaBrain } from "react-icons/fa";
 import { FaGlassCheers } from "react-icons/fa";
+import { baseFileUrl } from "../../../config/constant";
 
-export const WhyChoose = () => {
+export const WhyChoose = ({homeData}) => {
+  const imageUrl = `${baseFileUrl}${homeData?.whyChooseImageUrl}`
   return (
     <div className="w-full flex">
       <div className="content_section bg-bgBlue  p-6 px-10  w-full">
         <h1 className="text-4xl font-medium">
-          Why Book A <span className="text-primary"> New York City</span> Bus
-          Tour With Us?
+         {homeData?.whyChooseWhite1} <span className="text-primary"> {homeData?.whyChooseOrange}</span> {homeData?.whyChooseWhite2}
         </h1>
         <p className="py-3 text-base">
-          With New York Iconic Cruises, you’re sure to find the perfect tour for
-          exploring during your time in New York City. Buy your ticket and plan
-          your adventure today! At New York Iconic Cruis2s, we also offer the
-          ultimate charter experience for groups of any size for a variety of
-          events.
+         {homeData?.whyChooseParagraph}
         </p>
         <div className="info_section my-2">
           <div className="child_section flex gap-3">
@@ -27,10 +24,9 @@ export const WhyChoose = () => {
             <FaMapMarkedAlt className="text-5xl p-2" />
             </div>
             <div>
-              <h2 className="font-bold">Expert Guides</h2>
+              <h2 className="font-bold">{homeData?.whyChooseHeaderSection1}</h2>
               <p className="text-sm">
-                Take advantage of our well-versed in the history, culture, and
-                hidden gems of New York City.
+               {homeData?.whyChooseParagraphSection1}
               </p>
             </div>
           </div>
@@ -39,10 +35,9 @@ export const WhyChoose = () => {
             <FaFunnelDollar className="text-5xl p-2" />
             </div>
             <div>
-              <h2 className="font-bold">Best Prices</h2>
+              <h2 className="font-bold">{homeData?.whyChooseHeaderSection2}</h2>
               <p className="text-sm">
-                Take advantage of our well-versed in the history, culture, and
-                hidden gems of New York City.
+              {homeData?.whyChooseParagraphSection2}
               </p>
             </div>
           </div>
@@ -51,10 +46,9 @@ export const WhyChoose = () => {
             <FaBrain className="text-5xl p-2" />
             </div>
             <div>
-              <h2 className="font-bold">Memorable Experiences</h2>
+              <h2 className="font-bold">{homeData?.whyChooseHeaderSection3}</h2>
               <p className="text-sm">
-                Take advantage of our well-versed in the history, culture, and
-                hidden gems of New York City.
+              {homeData?.whyChooseParagraphSection3}
               </p>
             </div>
           </div>
@@ -63,17 +57,16 @@ export const WhyChoose = () => {
             <FaGlassCheers className="text-5xl p-2" />
             </div>
             <div>
-              <h2 className="font-bold">Comprehensive Itineraries</h2>
+              <h2 className="font-bold">{homeData?.whyChooseHeaderSection4}</h2>
               <p className="text-sm">
-                Take advantage of our well-versed in the history, culture, and
-                hidden gems of New York City.
+              {homeData?.whyChooseParagraphSection4}
               </p>
             </div>
           </div>
         </div>
       </div>
       <div className="img_section_fam w-full">
-        <img src={package_fam} alt="package_fam" />
+        <img src={imageUrl} alt="package_fam" />
       </div>
     </div>
   );

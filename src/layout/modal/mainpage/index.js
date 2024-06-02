@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { RxCross2 } from "react-icons/rx";
 import hoponHoOFF from "../../../assest/images/Hop-on-Hop-off-3.jpg";
 import "../index.css";
+import { baseFileUrl } from '../../../config/constant';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -23,6 +24,13 @@ export  const MainPageModal = () => {
     const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch('https://api.nyiconictours.com/coupon/all').then(
+     response=>response.json()).then(data=>setData(data?.data));
+ }, []); 
+ const imageUrl = `${baseFileUrl}${data?.couponImageUrl}`
+ console.log("Data",data);
   return (
     <div className='main_modal_page'>
           <Modal
@@ -45,12 +53,12 @@ export  const MainPageModal = () => {
             <RxCross2 />             
             </div>
           <div>
-                <img src={hoponHoOFF} alt='hoponHoOFF'/>
+                <img src={imageUrl} alt='hoponHoOFF'/>
           </div>
               <div className='my-2 flex flex-col justify-center w-full items-center'>
-                 <h1 className='text-center text-black text-3xl font-bold'>Why Hop-Off When You Can Hop-On?</h1>
-                 <h2 className='text-center text-primary text-4xl font-bold'>GET 25% OFF YOUR TICKET</h2>
-                 <button className='btn_coupon flex justify-center w-64 my-2'>COUPON: WINTER</button>
+                 <h1 className='text-center text-black text-3xl font-bold'>{data?.blackHeader}</h1>
+                 <h2 className='text-center text-primary text-4xl font-bold'>{data?.orangeHeader}</h2>
+                 <button className='btn_coupon flex justify-center w-64 my-2'>COUPON: {data?.couponCode}</button>
               </div>
        </div>
           </Box>

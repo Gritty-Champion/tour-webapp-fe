@@ -289,6 +289,7 @@ export let dammyDataSingleBus = [
     dealFrom: "64",
     adultPrice: "64",
     childPirce: "64",
+    bought:150,
   },
 
   // {
@@ -454,7 +455,7 @@ export let dammyDataSingleBus = [
 
   {
     id: 5,
-    heading: "Liberty boat Cruises",
+    heading: "Liberty Boat Cruises",
     offpercent: "Online Deal Save 35%",
     img: tower,
     uniqueId: "liberty-boat-cruises",
@@ -521,6 +522,7 @@ export let dammyDataSingleBus = [
     dealFrom: "39.99",
     adultPrice: "39.99",
     childPirce: "39.99",
+    bought:160,
   },
 ];
 
@@ -641,6 +643,7 @@ export let dammyDataDoubleBus = [
     dealFrom: "49.99",
     adultPrice: "49.99",
     childPirce: "49.99",
+    bought:165,
   },
    
   {
@@ -726,6 +729,7 @@ export let dammyDataDoubleBus = [
     dealFrom: "64",
     adultPrice: "64",
     childPirce: "64",
+    bought:170,
   },
 ];
 
@@ -832,6 +836,7 @@ export let dammyDataIconic = [
     dealFrom: "123",
     adultPrice: "123",
     childPirce: "123",
+    bought:180,
   },
   {
     id: 3,
@@ -896,6 +901,7 @@ export let dammyDataIconic = [
     dealFrom: "206",
     adultPrice: "206",
     childPirce: "206",
+    bought:175,
   },
   {
     id: 4,
@@ -938,5 +944,6 @@ export let dammyDataIconic = [
     dealFrom: "39.99",
     adultPrice: "39.99",
     childPirce: "39.99",
+    bought:182,
   },
 ];

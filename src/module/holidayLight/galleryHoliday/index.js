@@ -10,8 +10,28 @@ import {
   dammyDataDoubleBus,
   dammyDataIconic,
 } from "../../../data/packages";
+import { baseFileUrl } from "../../../config/constant";
 export const HolidayTourGallery = ({ realData }) => {
   console.log(realData, "realData");
+  const url = `${baseFileUrl}${realData?.mainUrl}`;
+  let image1 = null;
+  let image2 = null;
+  let image3 = null;
+  let image4 = null;
+  console.log("RealData Packages",realData);
+  if (realData?.packageImage1) {
+    image1 = `${baseFileUrl}${realData?.packageImage1}`;
+  }
+  if (realData?.packageImage2) {
+    image2 = `${baseFileUrl}${realData?.packageImage2}`;
+  }
+  if (realData?.packageImage3) {
+    image3 = `${baseFileUrl}${realData?.packageImage3}`;
+  }
+  if (realData?.packageImage4) {
+    image4 = `${baseFileUrl}${realData?.packageImage4}`;
+  }
+
   return (
     <div className="holiday_tour">
       <div className="w-full">
@@ -19,10 +39,12 @@ export const HolidayTourGallery = ({ realData }) => {
           <div className="content_imge">
             <h1 className="text-left text-black text-2xl">
               {" "}
-              {realData?.heading}
-              
-            </h1><div className="img_gallery_holiday my-2 has_video">
-              <div className="w-full h-full"> { realData?.video && (
+              {realData?.packageLabel}
+            </h1>
+            <div className="img_gallery_holiday my-2 has_video">
+              <div className="w-full h-full">
+                {" "}
+                {realData?.video && (
                   <video
                     src={realData?.video}
                     className="fixed1_img"
@@ -31,30 +53,20 @@ export const HolidayTourGallery = ({ realData }) => {
                     muted
                   />
                 )}
-                </div>
-                </div>
+              </div>
+            </div>
             <div className="img_gallery_holiday my-2">
               <div className="w-full h-full">
-                {realData?.galleryImg ? (
-                  <img
-                    src={realData?.galleryImg && realData?.galleryImg[0]}
-                    alt="enjoyment"
-                    className="w-full rounded-l-xl"
-                  />
-                ) : (
-                  <img
-                    src={enjoyment}
-                    alt="enjoyment"
-                    className="w-full rounded-l-xl"
-                  />
-                )}
+                <img
+                  src={url}
+                  alt="enjoyment"
+                  className="w-full rounded-l-xl"
+                />
+                )
               </div>
               <div className="flex flex-col gap-2 h-full gallery_two">
-                {realData?.galleryImg ? (
-                  <img
-                    src={realData?.galleryImg && realData?.galleryImg[1]}
-                    alt="chrimtas1"
-                  />
+                {realData?.packageUrls ? (
+                  <img src={image1} alt="chrimtas1" />
                 ) : (
                   <img
                     src={children}
@@ -62,11 +74,8 @@ export const HolidayTourGallery = ({ realData }) => {
                     className="fixed_img rounded-l-xl"
                   />
                 )}
-                {realData?.galleryImg ? (
-                  <img
-                    src={realData?.galleryImg && realData?.galleryImg[2]}
-                    alt="selling_img"
-                  />
+                {realData?.packageUrls ? (
+                  <img src={image2} alt="selling_img" />
                 ) : (
                   <img
                     src={northpool}
@@ -76,12 +85,8 @@ export const HolidayTourGallery = ({ realData }) => {
                 )}
               </div>
               <div className="flex flex-col gap-2 h-full gallery_three">
-                {realData?.galleryImg ? (
-                  <img
-                    src={realData?.galleryImg && realData?.galleryImg[3]}
-                    alt="northpool"
-                    className="rounded-tr-xl"
-                  />
+                {realData?.packageUrls ? (
+                  <img src={image3} alt="northpool" className="rounded-tr-xl" />
                 ) : (
                   <img
                     src={selling_img}
@@ -90,12 +95,8 @@ export const HolidayTourGallery = ({ realData }) => {
                   />
                 )}
 
-                {realData?.galleryImg ? (
-                  <img
-                    src={realData?.galleryImg && realData?.galleryImg[4]}
-                    alt="children"
-                    className="rounded-br-xl"
-                  />
+                {realData?.packageUrls ? (
+                  <img src={image4} alt="children" className="rounded-br-xl" />
                 ) : (
                   <img
                     src={chrimtas1}
@@ -111,5 +112,3 @@ export const HolidayTourGallery = ({ realData }) => {
     </div>
   );
 };
-
-

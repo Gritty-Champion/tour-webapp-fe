@@ -1,0 +1,1 @@
+export const baseFileUrl="https://nyiconictours-images.s3.us-east-2.amazonaws.com/";

@@ -31,48 +31,29 @@ function App() {
   const navigate = useNavigate();
   let [data, setData] = useState("");
   let [totalAmount, setTotalAmount] = useState(0);
+  const [packageData, setPackageData] = useState([]);
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    fetch("https://api.nyiconictours.com/package/all")
+      .then((response) => response.json())
+      .then((data) => setPackageData(data?.data?.sort((a, b) => a.orderNumber - b.orderNumber)));
+  }, []);
+  useEffect(() => {
+    fetch("https://api.nyiconictours.com/category/all")
+      .then((response) => response.json())
+      .then((data) => setCategory(data?.data));
+  }, []);
   const getnamePackages = (uniqueValue) => {
     //  console.log(value,"getnamePackages");
-
+    console.log("Unique Value----->",uniqueValue);
+    console.log("Packages Data",packageData);
     let filterData;
-
-    // Check if uniqueValue exists in iconicPackages array
-    const foundInIconic = dammyDataIconic.some(
-      (item) => item.uniqueId === uniqueValue
-    );
-
-    // Check if uniqueValue exists in doublePackages array
-    const foundInDouble = dammyDataDoubleBus.some(
-      (item) => item.uniqueId === uniqueValue
-    );
-
-    // check Single exists
-
-    const singlBus = dammyDataSingleBus.some(
-      (item) => item.uniqueId === uniqueValue
-    );
-
-    if (foundInIconic) {
-      filterData = dammyDataIconic.filter(
-        (item) => item.uniqueId === uniqueValue
-      );
-      console.log("filterdataIF", filterData);
-    } else if (foundInDouble) {
-      filterData = dammyDataDoubleBus.filter(
-        (item) => item.uniqueId === uniqueValue
-      );
-      console.log("filterdataElseif", filterData);
-    } else {
-      filterData = dammyDataSingleBus.filter(
-        (value) => value.uniqueId == uniqueValue
-      );
-      console.log("filterdataElse", filterData);
-    }
-
+   filterData= packageData.filter((pack) => pack?.packageLabel==uniqueValue)
+   console.log("Filter Data----->",filterData);
     if (filterData && filterData.length > 0) {
-      navigate(`/packages/${filterData[0].uniqueId}`);
-      setData(filterData[0].uniqueId);
-      localStorage.setItem("link", filterData[0].uniqueId);
+      setData(filterData[0]?.packageLabel);
+      localStorage.setItem("link", filterData[0]?.packageLabel);
+      navigate(`/packages/${filterData[0]?.packageLabel}`);
       console.log("Ending Function");
       // window.location.reload();
     }
@@ -94,7 +75,7 @@ function App() {
   return (
     <> 
       <Routes>
-        <Route path="/" element={<Home getnamePackages={getnamePackages} />} />
+        <Route path="/" element={<Home getnamePackages={getnamePackages} packages={packageData} category={category}/>} />
         <Route
           path="/packages/:packageName"
           element={
@@ -102,6 +83,8 @@ function App() {
               data={data}
               getnamePackages={getnamePackages}
               setTotalAmount={setTotalAmount}
+              packages={packageData}
+              category={category}
             />
           }
         />
@@ -120,28 +103,28 @@ function App() {
         />
         <Route
           path="/about-us"
-          element={<Aboutus getnamePackages={getnamePackages} />}
+          element={<Aboutus getnamePackages={getnamePackages} packages={packageData} category={category}/>}
         />
         <Route
           path="/contact"
-          element={<Contact getnamePackages={getnamePackages} />}
+          element={<Contact getnamePackages={getnamePackages} packages={packageData} category={category}/>}
         />
         <Route
           path="/faq"
-          element={<Faqs getnamePackages={getnamePackages} />}
+          element={<Faqs getnamePackages={getnamePackages} category={category} packages={packageData} />}
         />
         <Route
           path="/attraction"
-          element={<Attraction getnamePackages={getnamePackages} />}
+          element={<Attraction getnamePackages={getnamePackages} category={category}/>}
         />
         <Route path="/holiday-tour" element={<HolidayTour />} />
         <Route
           path="/private-hire"
-          element={<PrivateHire getnamePackages={getnamePackages} />}
+          element={<PrivateHire getnamePackages={getnamePackages} packages={packageData} category={category} />}
         />
         <Route
           path="/tour"
-          element={<Tour getnamePackages={getnamePackages} />}
+          element={<Tour getnamePackages={getnamePackages} packages={packageData} category={category} />}
         />
         <Route
           path="/terms&Condition"

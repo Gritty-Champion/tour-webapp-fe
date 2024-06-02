@@ -46,26 +46,6 @@ export const Checkout = () => {
   let navigate = useNavigate();
   let realData = JSON.parse(localStorage.getItem("realData"));
   let AllPrice = JSON.parse(localStorage.getItem("totalAmount"));
-  let [formdata, setFormData] = useState({
-    email: formData?.email,
-    firstName: formData?.firstName,
-    lastName: formData?.lastName,
-    amount: Math.floor(Number(totalAmount)),
-    packageName: realData?.heading,
-  });
-
-  const onChangeFunc = (e) => {
-    setFormData({
-      ...formdata,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const onSubmitFunc = (e) => {
-    e.preventDefault();
-  };
-
-
   const [discount, setDiscount] = useState(0); // State to hold the discount amount
   const [totalPrice, setTotalPrice] = useState(() => {
     return AllPrice || 0; // Default to 0 if AllPrice is null
@@ -73,12 +53,9 @@ export const Checkout = () => {
   const [isCouponApplied, setIsCouponApplied] = useState(false);
 
  
-  const [couponCode, setCouponCode] = useState('');
+  const [couponCode, setCouponCode] = useState(localStorage.getItem("couponCode"));
   const [couponCost,setCouponCost] = useState(0);
-  const handleCouponChange = (event) => {
-    setCouponCode(event.target.value);
-    console.log("Handle Coupon Code",event.target.value);
-  };
+
 
   // Function to handle coupon code input change
  
@@ -96,6 +73,36 @@ export const Checkout = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  let [formdata, setFormData] = useState({
+    email: formData?.email,
+    firstName: formData?.firstName,
+    lastName: formData?.lastName,
+    amount: Math.floor(Number(totalAmount)),
+    packageName: realData?.packageLabel,
+    calenderDate:localStorage.getItem("selectedDate"),
+    kids:Number(localStorage.getItem("kids")),
+    adults:Number(localStorage.getItem("adults")),
+    isCouponApplied:localStorage.getItem("coupon")
+  });
+  
+  const onChangeFunc = (e) => {
+    setFormData({
+      ...formdata,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmitFunc = (e) => {
+    localStorage.removeItem("selectedDate")
+    localStorage.removeItem("isCouponApplied")
+    localStorage.removeItem("coupon")
+    localStorage.removeItem("kids")
+    localStorage.removeItem("adults")
+    e.preventDefault();
+  };
+
+
+  
 
   const today = dayjs(); // Get today's date using Day.js
 
@@ -133,14 +140,13 @@ export const Checkout = () => {
     if(localStorage.getItem("kids")){ 
     let kidsNum = Number(localStorage.getItem("kids"))
     setkidPrice(kidsNum) 
-    setKidCost(kidsNum*Number(realData.childPirce))
-    localStorage.removeItem("kids")
+    setKidCost(kidsNum*Number(realData.kidsOfferPrice))
+    
     }
     if(localStorage.getItem("adults")){
      let adultsNum = Number(localStorage.getItem("adults"))
      setAdultPrice(adultsNum)
-     setAdultCost(adultsNum*Number(realData?.adultPrice))
-     localStorage.removeItem("adults")
+     setAdultCost(adultsNum*Number(realData?.adultOfferPrice))
     }
   })
 
@@ -208,7 +214,7 @@ export const Checkout = () => {
           };
 
           const paymentResponse = await fetch(
-            "https://api.nyiconictours.com/api/payment/process",
+            "https://https://api.nyiconictours.com/api/payment/process",
             {
               method: "POST",
               headers: {
@@ -285,19 +291,19 @@ export const Checkout = () => {
                 <div className="card_pricing w-full relative">
                   <div className="sticky top-0 mb-4">
                     <div className="nested_card_pricing text-black ">
-                      <h1 className="text-center">{realData?.heading}</h1>
+                      <h1 className="text-center">{realData?.packageLabel}</h1>
                       <div className="extra_feature flex gap-3 items-center justify-between my-3">
                         <div className="flex flex-col items-center px-1 w-full">
                           <BiWorld color="blue" />
                           <p className="text-xs text-center py-1">
-                            Most Iconic Tour
+                          {realData?.packageTag}
                           </p>
                         </div>
 
                         <div className="text-primary flex flex-col items-center px-1 w-full">
                           <SiFireship />
                           <p className="text-xs text-center py-1">
-                            103 + bought in past 24 hours
+                          {realData.bought} + bought in past 24 hours
                           </p>
                         </div>
                         <div className="flex flex-col items-center px-1 w-full">
@@ -308,7 +314,7 @@ export const Checkout = () => {
                             <MdOutlineStar color="#ffc107" />
                             <MdOutlineStarBorder />
                           </div>
-                          <p className="text-xs text-center py-1">4.0 Stars</p>
+                          <p className="text-xs text-center py-1">{realData?.review} Stars</p>
                         </div>
                       </div>
                       <div className="my-4">
@@ -378,7 +384,7 @@ export const Checkout = () => {
                 </div>
               </div> */}
                         <p className="text-center">
-                          Activate anytime within 12 months of purchase.
+                        {realData?.packageNote}
                         </p>
 
                         {urlSection == "brooklyn-express-tour" ? (
@@ -394,7 +400,7 @@ export const Checkout = () => {
                               <div className="flex gap-3 w-full">
                                 {/* <del className="text-xs">$124</del>{" "} */}
                                 <p className="text-2xl text-red-500">
-                                  ${realData?.adultPrice}
+                                  ${realData?.adultOfferPrice}
                                 </p>
                               </div>
                               <div className="quantity flex items-center justify-between px-5">
@@ -412,7 +418,7 @@ export const Checkout = () => {
                               <div className="flex gap-3 w-full">
                                 {/* <del className="text-xs">$124</del>{" "} */}
                                 <p className="text-2xl text-red-500">
-                                  ${realData?.childPirce}
+                                  ${realData?.kidsOfferPrice}
                                 </p>
                               </div>
                               <div className="quantity flex items-center justify-between px-5">
@@ -427,7 +433,7 @@ export const Checkout = () => {
                                     Applied Coupon Code:
                                   </label>
                                  <label>
-                                  WINTER
+                                  {couponCode}
                                  </label>
                                 </div>
                                

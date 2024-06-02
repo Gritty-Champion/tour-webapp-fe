@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { BiWorld } from "react-icons/bi";
 import { SiFireship } from "react-icons/si";
@@ -17,6 +17,7 @@ import dayjs from "dayjs"; // Import Day.js
 import { FaRegClock } from "react-icons/fa6";
 import { ModalForm } from "../../../layout/modal/inddex";
 import { useNavigate } from "react-router-dom";
+
 let timeData = [
   {
     id: 1,
@@ -44,9 +45,7 @@ let timeData = [
   },
 ];
 
-
-
-export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
+export const HolidayPricingSection = ({ realData, setTotalAmount }) => {
   let [adultPrice, setAdultPrice] = useState(0);
   let [kidPrice, setkidPrice] = useState(0);
   const [adultCost, setAdultCost] = useState(0); // Initial price for adults
@@ -55,15 +54,16 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
   const [expanded, setExpanded] = useState(false);
   let [timeid, setTimeId] = useState(1);
   let [weekDay, setWeekDay] = useState("");
-  let [url, setURl]=useState(false);
-   let [sectionUrl, setSectionUrl]=useState(false);
+  let [url, setURl] = useState(false);
+  let [sectionUrl, setSectionUrl] = useState(false);
 
-
-  let navigate=useNavigate();
+  let navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [validationMessage, setValidationMessage] = useState(""); // State for validation message
 
   const onClickFuncAdult = (selectedPirce) => {
     // Increment adult ticket price by 1 and ensure it doesn't go below 0
@@ -85,13 +85,16 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
     setkidPrice((prevPrice) => Math.max(prevPrice - 1, 0));
     setKidCost((prevPrice) => Math.max(prevPrice - Number(selectedCost), 0));
   };
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setValidationMessage(""); // Clear validation message on date selection
+  };
 
   const today = dayjs(); // Get today's date using Day.js
 
   // Define a function to check if the selected date is after today
   const isAfterToday = (date) => {
-    const dayOfWeek = dayjs(date).day(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-    return dayOfWeek !== 1 && dayOfWeek !== 3 && dayOfWeek !== 2;
+    return date.isBefore(today, 'day');
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -121,64 +124,55 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
     setTimeId(id);
   };
 
-  const handleDateChange = (date) => {
-    // console.log(new Date(date.$d));
-
-    let dates = new Date(date.$d);
-    const options = { weekday: "long" };
-    const weekday = dates.toLocaleDateString("en-US", options);
-    // setWeekDay(weekday);
-    handleDaySelect(weekday);
-    setSelectedDate(date);
-  };
   const shouldDisableMonth = (startDate) => {
     const startOfMonth = dayjs(startDate).startOf("month");
     const startOfCurrentMonth = today.startOf("month");
     return startOfMonth.isBefore(startOfCurrentMonth);
   };
-  // console.log("selectedDate", selectedDate);
-  
-  useEffect(() =>{
+
+  useEffect(() => {
     let urlData = ["hop-on-hop-off-harlem-tour", "hop-on-hop-off-uptown-tour"];
     const currentPath = window.location.pathname.split("/").pop();
-    console.log("currentPath",currentPath);  
+    console.log("currentPath", currentPath);
     let resp = urlData.includes(currentPath);
     console.log("resp", resp);
     setURl(resp);
-  });
-  
+  }, []);
 
   let urlSection = window.location.pathname.split("/").pop();
   console.log('urlSection', urlSection);
-  // setSectionUrl(urlSection);
 
-  const getTotalAmount=() =>{
-       console.log(adultCost , kidCost);
-       setTotalAmount(adultCost + kidCost);
-       localStorage.setItem("realData",JSON.stringify(realData));
-       localStorage.setItem("kids",kidCost/Number(realData?.childPirce));
-       localStorage.setItem("adults",adultCost/Number(realData?.adultPrice));
-       localStorage.setItem("totalCost",adultCost+kidCost)
-       navigate("/reserve/confirm");
-  }
-
+  const getTotalAmount = () => {
+    if (!selectedDate) {
+      setValidationMessage("Please select a date."); // Set validation message if no date is selected
+      return;
+    }
+    console.log(adultCost, kidCost);
+    setTotalAmount(adultCost + kidCost);
+    localStorage.setItem("realData", JSON.stringify(realData));
+    localStorage.setItem("kids", kidCost / Number(realData?.kidsOfferPrice));
+    localStorage.setItem("adults", adultCost / Number(realData?.adultOfferPrice));
+    localStorage.setItem("totalCost", adultCost + kidCost);
+    localStorage.setItem("selectedDate", selectedDate?.toISOString()?.split('T')[0]);
+    navigate("/reserve/confirm");
+  };
 
   return (
     <div className="w-2/5 pricing_info">
       <div className="card_pricing w-full relative">
         <div className="sticky top-0 mb-4">
           <div className="nested_card_pricing text-black ">
-            <h1 className="text-center">{realData?.heading}</h1>
+            <h1 className="text-center">{realData?.packageLabel}</h1>
             <div className="extra_feature flex gap-3 items-center justify-between my-3">
               <div className="flex flex-col items-center px-1 w-full">
                 <BiWorld color="blue" />
-                <p className="text-xs text-center py-1">Most Iconic Tour</p>
+                <p className="text-xs text-center py-1">{realData?.packageTag}</p>
               </div>
 
               <div className="text-primary flex flex-col items-center px-1 w-full">
-                <SiFireship  />
+                <SiFireship />
                 <p className="text-xs text-center py-1">
-                  103 + bought in past 24 hours
+                  {realData.bought}+ bought in past 24 hours
                 </p>
               </div>
               <div className="flex flex-col items-center px-1 w-full">
@@ -189,181 +183,112 @@ export const HolidayPricingSection = ({ realData,setTotalAmount }) => {
                   <MdOutlineStar color="#ffc107" />
                   <MdOutlineStarBorder />
                 </div>
-                <p className="text-xs text-center py-1">4.0 Stars</p>
+                <p className="text-xs text-center py-1">{realData?.review} Stars</p>
               </div>
             </div>
             <div className="my-4">
               <h1 className="text-center">
                 Choose either Specific or Flexible Date:
               </h1>
-              {url == true ? (
-                <>
-                  <div className="date_picker my-2 w-full">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        label="Choose a departure:"
-                        shouldDisableDate={isAfterToday}
-                        shouldDisableMonth={shouldDisableMonth}
-                      />
-                    </LocalizationProvider>
-                  </div>
-                  <div className="date_picker time_section my-2 w-full">
-                    <div>
-                      <Accordion
-                        expanded={expanded === "panel1"}
-                        onChange={handleChange("panel1")}
-                      >
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
-                        >
-                          <Typography
-                            sx={{ width: "100%", flexShrink: 0 }}
-                            display={"flex"}
-                            alignItems={"center"}
-                            gap={"12px"}
-                          >
-                            <FaRegClock />
-                            <span> Select a Departure Time:</span>
-                          </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails className="h-auto">
-                          <div className="times">
-                            {timeData.map((value) => {
-                              return (
-                                <div
-                                  key={value.id}
-                                  onClick={() => getIdTime(value.id)}
-                                  className={`time-card ${
-                                    value.id === timeid ? "time_active" : ""
-                                  }`}
-                                >
-                                  {" "}
-                                  <button type="button" className="w-full">
-                                    {value.timeValue}
-                                  </button>{" "}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </AccordionDetails>
-                      </Accordion>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                ""
+              <div className="date_picker my-2 w-full">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    label="Choose a departure:"
+                    shouldDisableDate={isAfterToday} // Disable past dates
+                  />
+                </LocalizationProvider>
+              </div>
+              {validationMessage && (
+                <p className="text-red-500 text-center">{validationMessage}</p>
               )}
 
-              {/* <div className="flex_date">
-                <div>
-                  <p>Flexible Date</p>
-                </div>
-              </div> */}
               <p className="text-center">
-                Activate anytime within 12 months of purchase.
+                {realData?.packageNote}
               </p>
 
               {urlSection == "brooklyn-express-tour" ? (
-                 <div className="btn_buyNow my-2">
+                <div className="btn_buyNow my-2">
                   <button type="button" onClick={handleOpen}>
-                  Buy Now
-                </button>
+                    Buy Now
+                  </button>
                 </div>
               ) : (
                 <div className="diff_pricing">
-                <div className="adults flex items-center justify-between my-2">
-                  <h1 className="w-full">Adults</h1>
-                  <div className="flex gap-3 w-full">
-                    {/* <del className="text-xs">$124</del>{" "} */}
-                    <p className="text-2xl text-red-500">
-                      ${realData?.adultPrice}
+                  <div className="adults flex items-center justify-between my-2">
+                    <h1 className="w-full">Adults</h1>
+                    <div className="flex gap-3 w-full">
+                      <p className="text-2xl text-red-500">
+                        ${realData?.adultOfferPrice}
+                      </p>
+                    </div>
+                    <div className="quantity w-full flex items-center justify-between px-5">
+                      <div
+                        onClick={() =>
+                          onClickFuncAdultDecrement(realData?.adultOfferPrice)
+                        }
+                        className="cursor-pointer"
+                      >
+                        -
+                      </div>
+                      <div>{adultPrice}</div>
+                      <div
+                        onClick={() => onClickFuncAdult(realData?.adultOfferPrice)}
+                        className="cursor-pointer"
+                      >
+                        +
+                      </div>
+                    </div>
+                  </div>
+                  <div className="adults flex items-center justify-between my-2">
+                    <h1 className="w-full relative">
+                      Kids <br />{" "}
+                      <span className="absolute top-4 text-xs"> (age 4-12)</span>
+                    </h1>
+                    <div className="flex gap-3 w-full">
+                      <p className="text-2xl text-red-500">
+                        ${realData?.kidsOfferPrice}
+                      </p>
+                    </div>
+                    <div className="quantity w-full flex items-center justify-between px-5">
+                      <div
+                        onClick={() =>
+                          onClickFuncKidDecrement(realData?.kidsOfferPrice)
+                        }
+                        className="cursor-pointer"
+                      >
+                        -
+                      </div>
+                      <div>{kidPrice}</div>
+                      <div
+                        onClick={() => onClickFuncKid(realData?.kidsOfferPrice)}
+                        className="cursor-pointer"
+                      >
+                        +
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-base text-end my-2">
+                    <p>
+                      {" "}
+                      Total: ${adultCost + kidCost}{" "}
+                      <span className="text-xs">+ fees</span>
                     </p>
                   </div>
-                  <div className="quantity w-full flex items-center justify-between px-5">
-                    <div
-                      onClick={() =>
-                        onClickFuncAdultDecrement(realData?.adultPrice)
-                      }
-                      className="cursor-pointer"
+                  <div className="btn_buyNow">
+                    <button
+                      type="button"
+                      disabled={adultCost == 0 && kidCost == 0}
+                      onClick={getTotalAmount}
                     >
-                      -
-                    </div>
-                    <div>{adultPrice}</div>
-                    <div
-                      onClick={() => onClickFuncAdult(realData?.adultPrice)}
-                      className="cursor-pointer"
-                    >
-                      +
-                    </div>
-                  </div>
-                </div>
-                <div className="adults flex items-center justify-between my-2">
-                  <h1 className="w-full relative">
-                    Kids <br />{" "}
-                    <span className="absolute top-4 text-xs"> (age 4-12)</span>
-                  </h1>
-                  <div className="flex gap-3 w-full">
-                    {/* <del className="text-xs">$124</del>{" "} */}
-                    <p className="text-2xl text-red-500">
-                      ${realData?.childPirce}
-                    </p>
-                  </div>
-                  <div className="quantity w-full flex items-center justify-between px-5">
-                    <div
-                      onClick={() =>
-                        onClickFuncKidDecrement(realData?.childPirce)
-                      }
-                      className="cursor-pointer"
-                    >
-                      -
-                    </div>
-                    <div>{kidPrice}</div>
-                    <div
-                      onClick={() => onClickFuncKid(realData?.childPirce)}
-                      className="cursor-pointer"
-                    >
-                      +
-                    </div>
-                  </div>
-                </div>
-                <div className="text-base text-end my-2">
-                  <p>
-                    {" "}
-                    Total: ${adultCost + kidCost}{" "}
-                    <span className="text-xs">+ fees</span>
-                  </p>
-                </div>
-                <div className="btn_buyNow">                  
-                    <button type="button" disabled={adultCost == 0 && kidCost == 0} onClick={getTotalAmount}>
                       Buy Now
                     </button>
+                  </div>
                 </div>
-              </div>
               )}
-
-
-
-
-            
             </div>
           </div>
-
-          {/* <div className="text-black p-2 other_section_holiday my-4">
-            <div>
-              <h1 className="text-lg text-center py-2 my-3">
-                Easy Boarding Process
-              </h1>
-              <p className="flex items-start gap-4">
-                <img src={iconDownload} alt="iconDownload" width={"40px"} />
-                Board buses & cruises, access attractions, and track live bus
-                arrival times with one app.
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
       <ModalForm open={open} handleClose={handleClose} />
