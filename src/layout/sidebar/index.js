@@ -71,7 +71,7 @@ export const ToggleSidebars = ({getnamePackages,packages}) => {
                   <div className="dropdown-content w-full">
                     <li>
                       <NavLink to={"/private-hire"}>
-                      Group Charters
+                      Groups Charters
                       </NavLink>
                       </li>
                     {/* <li>Maps</li> */}

@@ -12,7 +12,7 @@ export const Tour = ({getnamePackages,packages,category}) => {
       </div>
       <div className="absolute top-20 mt-6 w-full text-white">
        <TourSection  getnamePackages={getnamePackages} packages={packages}/>
-      <Footer />
+       <Footer getnamePackages={getnamePackages} packages={packages}/>
     </div>
       </div> 
     </div>

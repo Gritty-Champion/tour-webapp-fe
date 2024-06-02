@@ -23,7 +23,7 @@ export const PrivateHire = ({getnamePackages,packages,category}) => {
         <ContactInfoPrivateHire data={data}/>
         <FormSection/>
         </div>
-        <Footer />
+        <Footer getnamePackages={getnamePackages} packages={packages}/>
         
       </div>
     </div>

@@ -187,7 +187,7 @@ export const Header = ({ getnamePackages, packages,category }) => {
             </li>
             <li className="py-1">
               {" "}
-              <NavLink to={"/private-hire"}>Group & Charters</NavLink>{" "}
+              <NavLink to={"/private-hire"}>Groups & Charters</NavLink>{" "}
             </li>
             {/* <li className="py-1">
               {" "}

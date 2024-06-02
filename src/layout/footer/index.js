@@ -9,7 +9,7 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-export const Footer = ({getnamePackages,packages}) => {
+export const Footer = () => {
   return (
     <div className="w-full bg-bgBlue text-white">
       <div className="w-4/5 mx-auto py-4">
@@ -50,15 +50,7 @@ export const Footer = ({getnamePackages,packages}) => {
           <div className="link_section_two">
             <h1 className="text-lg">Helpful Links</h1>
             <ul>
-            {packages
-                  .map((pack) => (
-                      <li
-                        className="py-1 cursor-pointer"
-                        onClick={() => getnamePackages(pack?.packageLabel)}
-                      >
-                        {pack?.packageLabel}
-                      </li>
-                  ))}
+            <li className="py-1"> <NavLink to="/private-hire">Private Hire</NavLink>  </li>
             </ul>
           </div>
         </div>

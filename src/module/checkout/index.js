@@ -214,7 +214,7 @@ export const Checkout = () => {
           };
 
           const paymentResponse = await fetch(
-            "https://https://api.nyiconictours.com/api/payment/process",
+            "https://api.nyiconictours.com/api/payment/process",
             {
               method: "POST",
               headers: {
