@@ -34,7 +34,7 @@ export const SquarePayment = () => {
 
   return (
     <PaymentForm
-    applicationId="sandbox-sq0idb-rY0co3stwCrEdBL5ySkvNA"
+    applicationId="sq0idp-3WiRzwafQaugUf_clAWqQA"
       createVerificationDetails={() => ({
         amount: '1.00',
         billingContact: {
@@ -47,7 +47,7 @@ export const SquarePayment = () => {
         currencyCode: 'GBP',
         intent: 'CHARGE',
       })}
-      locationId="LTSMREPMPNNAS"
+      locationId="L6WQ4QCWBXWCF"
       cardView={<CreditCard />}
       onSubmit={handlePayment}
     />

@@ -201,7 +201,7 @@ export const Checkout = () => {
                   required
                 />
                  <PaymentForm
-        applicationId={"sandbox-sq0idb-MKXmHmZKK6RM18e4W5UQBg"}
+        applicationId={"sq0idp-3WiRzwafQaugUf_clAWqQA"}
         cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
           console.log("token:", token);
           console.log("verifiedBuyer:", verifiedBuyer);
@@ -214,7 +214,7 @@ export const Checkout = () => {
           };
 
           const paymentResponse = await fetch(
-            "https://api.nyiconictours.com/api/payment/process",
+            "http://localhost:8080/api/payment/process",
             {
               method: "POST",
               headers: {
