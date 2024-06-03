@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { PaymentForm, CreditCard } from "react-square-web-payments-sdk";
 import "./index.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { NY_Logo } from "../../assest";
 import { BiWorld } from "react-icons/bi";
@@ -157,8 +157,8 @@ export const Checkout = () => {
   return (
     <div className="confirmation_section w-full bg-white h-full h-screen">
       <div className="shadow-boxShadowHeader bgColor">
-        <header className="w-4/5 mx-auto">
-          <img src={NY_Logo} alt="ny_logo" className="w-40" />
+      <header className="w-4/5 mx-auto">
+          <Link to="/"><img src={NY_Logo} alt="ny_logo" className="w-40" /></Link>
         </header>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -214,7 +214,7 @@ export const Checkout = () => {
           };
 
           const paymentResponse = await fetch(
-            "http://localhost:8080/api/payment/process",
+            "https://api.nyiconictours.com/api/payment/process",
             {
               method: "POST",
               headers: {
@@ -318,9 +318,7 @@ export const Checkout = () => {
                         </div>
                       </div>
                       <div className="my-4">
-                        <h1 className="text-center">
-                          Choose either Specific or Flexible Date:
-                        </h1>
+                       
                         {url == true ? (
                           <>
                             <div className="date_picker my-2 w-full"></div>
@@ -383,9 +381,7 @@ export const Checkout = () => {
                   <p>Flexible Date</p>
                 </div>
               </div> */}
-                        <p className="text-center">
-                        {realData?.packageNote}
-                        </p>
+                        
 
                         {urlSection == "brooklyn-express-tour" ? (
                           <div className="btn_buyNow my-2">

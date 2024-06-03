@@ -187,9 +187,9 @@ export const HolidayPricingSection = ({ realData, setTotalAmount }) => {
               </div>
             </div>
             <div className="my-4">
-              <h1 className="text-center">
-                Choose either Specific or Flexible Date:
-              </h1>
+            <p className="text-center">
+                {realData?.packageNote}
+              </p>
               <div className="date_picker my-2 w-full">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
@@ -204,9 +204,7 @@ export const HolidayPricingSection = ({ realData, setTotalAmount }) => {
                 <p className="text-red-500 text-center">{validationMessage}</p>
               )}
 
-              <p className="text-center">
-                {realData?.packageNote}
-              </p>
+             
 
               {urlSection == "brooklyn-express-tour" ? (
                 <div className="btn_buyNow my-2">

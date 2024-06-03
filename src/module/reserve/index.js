@@ -293,9 +293,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                         </div>
                       </div>
                       <div className="my-4">
-                        <h1 className="text-center">
-                          Choose either Specific or Flexible Date:
-                        </h1>
+                       
                         {url == true ? (
                           <>
                             <div className="date_picker my-2 w-full"></div>
@@ -358,9 +356,7 @@ export const ConfirmationForm = ({ data, totalAmount }) => {
                   <p>Flexible Date</p>
                 </div>
               </div> */}
-                        <p className="text-center">
-                        {realData?.packageNote}
-                        </p>
+                       
 
                         {urlSection == "brooklyn-express-tour" ? (
                           <div className="btn_buyNow my-2">
