@@ -201,7 +201,7 @@ export const Checkout = () => {
                   required
                 />
                  <PaymentForm
-        applicationId={"sq0idp-3WiRzwafQaugUf_clAWqQA"}
+        applicationId={"sq0idp-qY_yUkcpQLY6YZH5AwplSQ"}
         cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
           console.log("token:", token);
           console.log("verifiedBuyer:", verifiedBuyer);
@@ -244,7 +244,7 @@ export const Checkout = () => {
             // Handle payment failure
           }
         }}
-        locationId={"L6WQ4QCWBXWCF"}
+        locationId={"L92FPYPQFN684"}
         amountMoney={{ amount, currency: "USD" }}
       >
         <CreditCard

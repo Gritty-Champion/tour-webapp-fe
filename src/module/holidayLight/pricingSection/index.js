@@ -64,7 +64,13 @@ export const HolidayPricingSection = ({ realData, setTotalAmount }) => {
   const handleClose = () => setOpen(false);
 
   const [validationMessage, setValidationMessage] = useState(""); // State for validation message
-
+  useEffect(()=>{
+    setAdultCost(0);
+    setAdultPrice(0);
+    setKidCost(0);
+    setkidPrice(0);
+    setSelectedDate(null);
+  },[realData])
   const onClickFuncAdult = (selectedPirce) => {
     // Increment adult ticket price by 1 and ensure it doesn't go below 0
     setAdultPrice((prevPrice) => Math.max(prevPrice + 1, 0));

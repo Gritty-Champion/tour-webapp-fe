@@ -45,6 +45,7 @@ function App() {
   }, []);
   const getnamePackages = (uniqueValue) => {
     //  console.log(value,"getnamePackages");
+    
     console.log("Unique Value----->",uniqueValue);
     console.log("Packages Data",packageData);
     let filterData;
@@ -63,14 +64,6 @@ function App() {
   }, []);
   let getSessionId = sessionStorage.getItem("password");
   console.log("datadatadatadata", totalAmount);
-
-  useEffect(() => {
-    if (getSessionId == "success") {
-      navigate("/");
-    } else {
-      navigate("/password");
-    }
-  }, []);
 
   return (
     <> 
