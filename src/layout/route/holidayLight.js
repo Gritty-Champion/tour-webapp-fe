@@ -8,55 +8,29 @@ import {
   dammyDataDoubleBus,
   dammyDataIconic,
 } from "../../data/packages";
+import { useLocation } from "react-router-dom";
 
 export const HolidayTour = ({ data, getnamePackages, setTotalAmount,packages,category }) => {
   console.log(data);
   let [realData, setReadlData] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     if (data == null || !data) {
       console.log("inide null Data");
       let linkValue = localStorage.getItem("link");
-      // let filterData=dammyDataSingleBus.filter(value => value.uniqueId === linkValue);
-      // console.log(filterData, linkValue);
-      // setReadlData(filterData);
-
       let foundData = null;
-
-      // // Check if uniqueValue exists in dammyDataSingleBus
-      // foundData = dammyDataSingleBus.find(
-      //   (item) => item.uniqueId === linkValue
-      // );
-
-      // // If not found in dammyDataSingleBus, check in doublePackages
-      // if (!foundData) {
-      //   foundData = dammyDataDoubleBus.find(
-      //     (item) => item.uniqueId === linkValue
-      //   );
-      // }
-
-      // // If still not found, check in iconicPackages
-      // if (!foundData) {
-      //   foundData = dammyDataIconic.find((item) => item.uniqueId === linkValue);
-      // }
-      console.log("Link Value---->",linkValue);
-      
-      foundData= packages.filter((pack) => pack?.packageLabel==linkValue)
-      console.log("Found Data",foundData);
-      if (foundData) {
-        // If found, set the data
-        setReadlData(foundData[0]);
-        // Optionally, perform other actions based on the found data
-      } else {
-        // Handle the case where the uniqueValue is not found in any array
-        console.log("Unique value not found in any array");
-      }
+      let path = location.pathname;
+      path = path.replace('/packages/', '');
+      path = decodeURIComponent(path);
+      fetch("https://api.nyiconictours.com/package/all")
+      .then((response) => response.json())
+      .then((data) =>  setReadlData(data?.data?.sort((a, b) => a.orderNumber - b.  orderNumber).filter((pack) => pack?.packageLabel==path)[0]));
     } 
     else {
 
       let foundData = null;
       foundData= packages.filter((pack) => pack?.packageLabel==data)
-      console.log("Found Data",foundData);
       if (foundData) {
         // If found, set the data
         setReadlData(foundData[0]);
