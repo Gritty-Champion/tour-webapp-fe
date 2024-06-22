@@ -26,7 +26,12 @@ import { CheckPassword } from "./module/authentication";
 import { ConfirmationForm } from "./module/reserve";
 import { Checkout } from "./module/checkout";
 import { ThankYou } from "./module/thankyou";
+import TagManager from 'react-gtm-module';
 
+const tagManagerArgs = {
+    gtmId: 'GTM-TD3XLTCP'
+}
+TagManager.initialize(tagManagerArgs);
 function App() {
   const navigate = useNavigate();
   let [data, setData] = useState("");
@@ -54,7 +59,7 @@ function App() {
     if (filterData && filterData.length > 0) {
       setData(filterData[0]?.packageLabel);
       localStorage.setItem("link", filterData[0]?.packageLabel);
-      navigate(`/packages/${filterData[0]?.packageLabel}`);
+      navigate(`/packages/${filterData[0]?.packageLabel?.replace(/\s+/g, '-').toLowerCase()}`);
       console.log("Ending Function");
       // window.location.reload();
     }

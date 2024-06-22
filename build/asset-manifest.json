@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.882d46e8.css",
-    "main.js": "/static/js/main.8cf76f54.js",
+    "main.js": "/static/js/main.b3eb1d8e.js",
     "static/js/787.dd827310.chunk.js": "/static/js/787.dd827310.chunk.js",
     "static/media/IMG_4711.png": "/static/media/IMG_4711.c40e39d6180b545e1609.png",
     "static/media/output-onlinegiftools.gif": "/static/media/output-onlinegiftools.c0ab00f21ec1d8e50eab.gif",
@@ -127,14 +127,14 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/rightArrow.svg": "/static/media/rightArrow.2b7c53f8ae436d1b7dec.svg",
     "index.html": "/index.html",
+    "static/media/rightArrow.svg": "/static/media/rightArrow.2b7c53f8ae436d1b7dec.svg",
     "main.882d46e8.css.map": "/static/css/main.882d46e8.css.map",
-    "main.8cf76f54.js.map": "/static/js/main.8cf76f54.js.map",
+    "main.b3eb1d8e.js.map": "/static/js/main.b3eb1d8e.js.map",
     "787.dd827310.chunk.js.map": "/static/js/787.dd827310.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.882d46e8.css",
-    "static/js/main.8cf76f54.js"
+    "static/js/main.b3eb1d8e.js"
   ]
 }

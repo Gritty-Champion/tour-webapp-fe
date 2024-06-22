@@ -51,6 +51,8 @@ export const Footer = () => {
             <h1 className="text-lg">Helpful Links</h1>
             <ul>
             <li className="py-1"> <NavLink to="/private-hire">Private Hire</NavLink>  </li>
+            <li>Planning your next trip? Search on Kayak</li>
+            <li className="py-1"><a href='https://www.kayak.com/flight-routes/United-States-US0/New-York-NYC' target='_blank'><img height='60' src='https://content.r9cdn.net/rimg/seo/badges/v1/ORANGE_LARGE_LOGO_KAYAK.png' /></a></li>
             </ul>
           </div>
         </div>
